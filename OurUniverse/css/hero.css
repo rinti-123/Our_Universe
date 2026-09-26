@@ -1,0 +1,901 @@
+/* ==========================================================
+   OUR UNIVERSE
+   Hero Section Module
+   Part 1 - Foundation
+========================================================== */
+
+/* ==========================================================
+   HERO SECTION
+========================================================== */
+
+#hero{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+    width:100%;
+
+    padding:32px;
+
+    overflow:hidden;
+
+    isolation:isolate;
+
+}
+
+/* ==========================================================
+   HERO CONTAINER
+========================================================== */
+
+.hero-container{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:1280px;
+
+    margin:0 auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* ==========================================================
+   HERO CONTENT
+========================================================== */
+
+.hero-content{
+
+    position:relative;
+
+    width:min(100%,720px);
+
+    padding:56px 40px;
+
+    text-align:center;
+
+    z-index:2;
+
+}
+
+/* ==========================================================
+   HERO SUBTITLE
+========================================================== */
+
+.hero-subtitle{
+
+    display:inline-block;
+
+    margin-bottom:18px;
+
+    color:var(--moon);
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+}
+
+/* ==========================================================
+   HERO TITLE
+========================================================== */
+
+.hero-title{
+
+    margin-bottom:26px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(3rem,8vw,5.4rem);
+
+    font-weight:700;
+
+    line-height:1.08;
+
+    color:var(--text);
+
+}
+
+.hero-title span{
+
+    display:inline-block;
+
+    animation:
+
+        heartbeat 2s ease-in-out infinite;
+
+}
+
+/* ==========================================================
+   HERO DESCRIPTION
+========================================================== */
+
+.hero-description{
+
+    width:min(100%,560px);
+
+    margin:0 auto 36px;
+
+    color:var(--text-muted);
+
+    font-size:1.05rem;
+
+    line-height:1.9;
+
+}
+
+/* ==========================================================
+   HERO ACTIONS
+========================================================== */
+
+.hero-actions{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+/* ==========================================================
+   PRIMARY BUTTON
+========================================================== */
+
+#beginJourneyBtn{
+
+    position:relative;
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-width:220px;
+
+    padding:16px 34px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:var(--glass);
+
+    color:#ffffff;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    transition:
+
+        transform .35s ease,
+
+        background .35s ease,
+
+        border-color .35s ease,
+
+        box-shadow .35s ease;
+
+}
+
+/* ==========================================================
+   BUTTON HOVER
+========================================================== */
+
+#beginJourneyBtn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+#beginJourneyBtn:active{
+
+    transform:scale(.97);
+
+}
+
+/* ==========================================================
+   BUTTON SHINE
+========================================================== */
+
+#beginJourneyBtn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:100%;
+
+    height:100%;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(255,255,255,.35),
+
+            transparent
+
+        );
+
+    transition:left .8s ease;
+
+}
+
+#beginJourneyBtn:hover::before{
+
+    left:120%;
+
+}
+
+/* ==========================================================
+   END OF PART 1
+========================================================== */
+/* ==========================================================
+   OUR UNIVERSE
+   Hero Section Module
+   Part 2 - Visual Design
+========================================================== */
+
+/* ==========================================================
+   HERO GLASS CARD
+========================================================== */
+
+.hero-content{
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    border-radius:32px;
+
+    backdrop-filter:blur(20px);
+
+    -webkit-backdrop-filter:blur(20px);
+
+    box-shadow:
+
+        0 24px 70px rgba(0,0,0,.45),
+
+        inset 0 1px 0 rgba(255,255,255,.08);
+
+}
+
+/* ==========================================================
+   HERO GLOW
+========================================================== */
+
+.hero-glow{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    width:360px;
+
+    height:360px;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(175,203,255,.28),
+
+            transparent 72%
+
+        );
+
+    filter:blur(45px);
+
+    transform:
+
+        translate(-50%,-50%);
+
+    animation:
+
+        heroFloat 7s ease-in-out infinite;
+
+    z-index:-1;
+
+}
+
+/* ==========================================================
+   DECORATIVE ORBS
+========================================================== */
+
+.hero-orb{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(18px);
+
+    opacity:.55;
+
+    pointer-events:none;
+
+}
+
+.hero-orb-left{
+
+    width:220px;
+
+    height:220px;
+
+    top:8%;
+
+    left:-70px;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(74,124,255,.35),
+
+            transparent 72%
+
+        );
+
+    animation:
+
+        glowFloat 9s ease-in-out infinite;
+
+}
+
+.hero-orb-right{
+
+    width:260px;
+
+    height:260px;
+
+    right:-90px;
+
+    bottom:5%;
+
+    background:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(255,120,178,.30),
+
+            transparent 72%
+
+        );
+
+    animation:
+
+        glowFloat 11s ease-in-out infinite reverse;
+
+}
+
+/* ==========================================================
+   HERO BADGE
+========================================================== */
+
+.hero-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-bottom:22px;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.10);
+
+    color:var(--text-muted);
+
+    font-size:.88rem;
+
+    backdrop-filter:blur(14px);
+
+}
+
+/* ==========================================================
+   TITLE HIGHLIGHT
+========================================================== */
+
+.hero-title strong{
+
+    color:var(--moon);
+
+    font-weight:700;
+
+    text-shadow:
+
+        0 0 20px rgba(175,203,255,.30);
+
+}
+
+/* ==========================================================
+   BUTTON POLISH
+========================================================== */
+
+#beginJourneyBtn{
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+
+        0 12px 30px rgba(0,0,0,.25);
+
+}
+
+#beginJourneyBtn:hover{
+
+    background:rgba(255,255,255,.10);
+
+    border-color:rgba(255,255,255,.22);
+
+    box-shadow:
+
+        0 18px 45px rgba(0,0,0,.35),
+
+        0 0 20px rgba(175,203,255,.18);
+
+}
+
+/* ==========================================================
+   HERO DECORATION
+========================================================== */
+
+.hero-decoration{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:-2;
+
+}
+
+/* ==========================================================
+   STAR BLUR
+========================================================== */
+
+.hero-star{
+
+    position:absolute;
+
+    width:6px;
+
+    height:6px;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
+    opacity:.6;
+
+    box-shadow:
+
+        0 0 14px rgba(255,255,255,.8);
+
+    animation:
+
+        starTwinkle 3.5s ease-in-out infinite;
+
+}
+
+.hero-star:nth-child(1){
+
+    top:12%;
+
+    left:18%;
+
+}
+
+.hero-star:nth-child(2){
+
+    top:26%;
+
+    right:20%;
+
+    animation-delay:1s;
+
+}
+
+.hero-star:nth-child(3){
+
+    bottom:18%;
+
+    left:24%;
+
+    animation-delay:2s;
+
+}
+
+.hero-star:nth-child(4){
+
+    bottom:24%;
+
+    right:16%;
+
+    animation-delay:.6s;
+
+}
+
+/* ==========================================================
+   END OF PART 2
+========================================================== */
+/* ==========================================================
+   OUR UNIVERSE
+   Hero Section Module
+   Part 3 - Responsive, Accessibility & Final Polish
+========================================================== */
+
+/* ==========================================================
+   PERFORMANCE
+========================================================== */
+
+.hero-content,
+.hero-glow,
+.hero-orb,
+.hero-star,
+#beginJourneyBtn{
+
+    will-change:transform,opacity;
+
+    transform:translateZ(0);
+
+    backface-visibility:hidden;
+
+}
+
+/* ==========================================================
+   ACCESSIBILITY
+========================================================== */
+
+#beginJourneyBtn:focus-visible{
+
+    outline:2px solid var(--moon);
+
+    outline-offset:5px;
+
+}
+
+@media (prefers-reduced-motion:reduce){
+
+    .hero-title span,
+
+    .hero-glow,
+
+    .hero-orb,
+
+    .hero-star,
+
+    #beginJourneyBtn::before{
+
+        animation:none !important;
+
+    }
+
+    #beginJourneyBtn{
+
+        transition:none !important;
+
+    }
+
+}
+
+/* ==========================================================
+   LARGE SCREENS
+========================================================== */
+
+@media (min-width:1400px){
+
+    .hero-content{
+
+        max-width:760px;
+
+    }
+
+}
+
+/* ==========================================================
+   TABLETS
+========================================================== */
+
+@media (max-width:992px){
+
+    #hero{
+
+        padding:28px;
+
+    }
+
+    .hero-content{
+
+        width:min(100%,680px);
+
+        padding:48px 34px;
+
+    }
+
+    .hero-title{
+
+        font-size:clamp(2.8rem,8vw,4.6rem);
+
+    }
+
+    .hero-description{
+
+        font-size:1rem;
+
+    }
+
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width:768px){
+
+    #hero{
+
+        padding:22px;
+
+    }
+
+    .hero-content{
+
+        padding:42px 24px;
+
+        border-radius:26px;
+
+    }
+
+    .hero-title{
+
+        font-size:clamp(2.4rem,10vw,3.8rem);
+
+        line-height:1.15;
+
+    }
+
+    .hero-description{
+
+        margin-bottom:32px;
+
+        font-size:.98rem;
+
+    }
+
+    .hero-actions{
+
+        flex-direction:column;
+
+        width:100%;
+
+    }
+
+    #beginJourneyBtn{
+
+        width:100%;
+
+        max-width:300px;
+
+    }
+
+    .hero-glow{
+
+        width:280px;
+
+        height:280px;
+
+    }
+
+    .hero-orb-left{
+
+        width:160px;
+
+        height:160px;
+
+    }
+
+    .hero-orb-right{
+
+        width:190px;
+
+        height:190px;
+
+    }
+
+}
+
+/* ==========================================================
+   SMALL DEVICES
+========================================================== */
+
+@media (max-width:480px){
+
+    .hero-content{
+
+        padding:36px 20px;
+
+    }
+
+    .hero-subtitle{
+
+        font-size:.82rem;
+
+        letter-spacing:3px;
+
+    }
+
+    .hero-title{
+
+        font-size:clamp(2rem,11vw,3rem);
+
+    }
+
+    .hero-description{
+
+        font-size:.92rem;
+
+        line-height:1.8;
+
+    }
+
+    .hero-badge{
+
+        padding:8px 14px;
+
+        font-size:.8rem;
+
+    }
+
+    #beginJourneyBtn{
+
+        min-width:100%;
+
+        padding:15px 24px;
+
+    }
+
+    .hero-glow{
+
+        width:220px;
+
+        height:220px;
+
+        filter:blur(36px);
+
+    }
+
+    .hero-orb-left,
+
+    .hero-orb-right{
+
+        display:none;
+
+    }
+
+}
+
+/* ==========================================================
+   ULTRA SMALL DEVICES
+========================================================== */
+
+@media (max-width:360px){
+
+    .hero-content{
+
+        padding:30px 18px;
+
+    }
+
+    .hero-title{
+
+        font-size:1.9rem;
+
+    }
+
+    .hero-description{
+
+        font-size:.9rem;
+
+    }
+
+}
+
+/* ==========================================================
+   TEXT SELECTION
+========================================================== */
+
+.hero-title::selection,
+.hero-description::selection,
+.hero-subtitle::selection{
+
+    background:rgba(175,203,255,.28);
+
+    color:#ffffff;
+
+}
+
+/* ==========================================================
+   FINAL HERO POLISH
+========================================================== */
+
+.hero-content{
+
+    animation:
+
+        pageReveal .9s ease both;
+
+}
+
+.hero-description{
+
+    text-wrap:pretty;
+
+}
+
+.hero-title{
+
+    text-wrap:balance;
+
+}
+
+/* ==========================================================
+   END OF HERO MODULE
+========================================================== */

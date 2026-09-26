@@ -1,0 +1,947 @@
+/* ==========================================================
+   100 REASONS
+   Cinematic Personal Section
+========================================================== */
+
+.reasons-section{
+    position:relative;
+    min-height:100vh;
+    padding:120px 20px;
+    overflow:hidden;
+    isolation:isolate;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255,120,178,.08),
+            transparent 32%
+        ),
+        #02040a;
+}
+
+
+/* ==========================================================
+   BACKGROUND
+========================================================== */
+
+.reasons-stars{
+    position:absolute;
+    inset:0;
+    z-index:-3;
+    pointer-events:none;
+
+    background-image:
+        radial-gradient(
+            1px 1px at 15% 20%,
+            rgba(255,255,255,.7),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 75% 15%,
+            rgba(255,255,255,.55),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 35% 70%,
+            rgba(255,255,255,.45),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 85% 75%,
+            rgba(255,255,255,.6),
+            transparent
+        ),
+        radial-gradient(
+            1px 1px at 55% 45%,
+            rgba(255,255,255,.4),
+            transparent
+        );
+
+    opacity:.7;
+}
+
+
+.reasons-glow{
+    position:absolute;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    filter:blur(100px);
+    pointer-events:none;
+    z-index:-2;
+}
+
+
+.reasons-glow-one{
+    top:-180px;
+    left:-180px;
+    background:rgba(255,120,178,.10);
+}
+
+
+.reasons-glow-two{
+    right:-180px;
+    bottom:-180px;
+    background:rgba(100,150,255,.10);
+}
+
+
+/* ==========================================================
+   CONTAINER
+========================================================== */
+
+.reasons-container{
+    width:100%;
+    max-width:760px;
+    margin:0 auto;
+    text-align:center;
+}
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.reasons-header{
+    margin-bottom:40px;
+}
+
+
+.reasons-kicker{
+    margin:0 0 14px;
+
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+
+    color:rgba(255,255,255,.48);
+}
+
+
+.reasons-title{
+    margin:0;
+
+    font-family:"Playfair Display", serif;
+    font-size:clamp(36px,7vw,64px);
+    line-height:1.08;
+    font-weight:600;
+
+    color:#fff;
+}
+
+
+.reasons-title span{
+    display:block;
+
+    margin-top:8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ff9bc5,
+            #b7ceff
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+
+.reasons-subtitle{
+    margin:18px 0 0;
+
+    font-size:14px;
+    line-height:1.7;
+
+    color:#aeb7ca;
+}
+
+
+/* ==========================================================
+   COUNTER
+========================================================== */
+
+.reasons-counter{
+    display:flex;
+    align-items:baseline;
+    justify-content:center;
+    gap:7px;
+
+    margin-bottom:13px;
+
+    font-family:"Inter",sans-serif;
+}
+
+
+.reasons-current{
+    font-size:30px;
+    font-weight:600;
+    color:#fff;
+}
+
+
+.reasons-slash{
+    color:rgba(255,255,255,.25);
+}
+
+
+.reasons-total{
+    font-size:14px;
+    color:#788299;
+}
+
+
+/* ==========================================================
+   PROGRESS
+========================================================== */
+
+.reasons-progress{
+    width:min(100%,520px);
+    height:3px;
+
+    margin:0 auto 34px;
+
+    overflow:hidden;
+
+    border-radius:999px;
+    background:rgba(255,255,255,.08);
+}
+
+
+.reasons-progress-fill{
+    width:1%;
+    height:100%;
+
+    border-radius:inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff78b2,
+            #b8ceff
+        );
+
+    box-shadow:
+        0 0 14px rgba(255,120,178,.35);
+
+    transition:width .45s ease;
+}
+
+
+/* ==========================================================
+   REASON CARD
+========================================================== */
+
+.reason-card{
+    position:relative;
+
+    width:100%;
+    min-height:330px;
+
+    padding:55px 38px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.075),
+            rgba(255,255,255,.025)
+        );
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    overflow:hidden;
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease;
+}
+
+
+.reason-card::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,120,178,.09),
+            transparent 45%
+        );
+
+    pointer-events:none;
+}
+
+
+.reason-card.is-changing{
+    opacity:0;
+    transform:translateY(8px) scale(.99);
+}
+
+
+.reason-label{
+    position:relative;
+    z-index:1;
+
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.25em;
+
+    color:#8993aa;
+}
+
+
+.reason-symbol{
+    position:relative;
+    z-index:1;
+
+    margin:28px 0 25px;
+
+    font-size:22px;
+
+    color:#ff9bc5;
+
+    text-shadow:
+        0 0 20px rgba(255,120,178,.45);
+}
+
+
+.reason-text{
+    position:relative;
+    z-index:1;
+
+    max-width:620px;
+
+    margin:0;
+
+    font-family:"Playfair Display",serif;
+    font-size:clamp(22px,4vw,34px);
+    line-height:1.45;
+
+    color:#f7f8fc;
+}
+
+
+.reason-small{
+    position:relative;
+    z-index:1;
+
+    margin-top:28px;
+
+    font-size:11px;
+    letter-spacing:.12em;
+
+    color:#737d94;
+}
+
+
+/* ==========================================================
+   NAVIGATION
+========================================================== */
+
+.reasons-navigation{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+
+    margin-top:26px;
+}
+
+
+.reason-nav-button,
+.reason-next{
+    min-height:50px;
+
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:999px;
+
+    font-family:"Inter",sans-serif;
+    font-size:13px;
+    font-weight:500;
+
+    cursor:pointer;
+
+    -webkit-tap-highlight-color:transparent;
+
+    transition:
+        transform .2s ease,
+        background .25s ease,
+        border-color .25s ease;
+}
+
+
+.reason-nav-button{
+    width:50px;
+
+    color:#cbd3e3;
+    background:rgba(255,255,255,.045);
+}
+
+
+.reason-next{
+    padding:0 22px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,120,178,.16),
+            rgba(150,180,255,.12)
+        );
+}
+
+
+.reason-next span{
+    margin-left:7px;
+}
+
+
+.reason-nav-button:hover,
+.reason-next:hover{
+    transform:translateY(-2px);
+
+    border-color:rgba(255,255,255,.20);
+
+    background:rgba(255,255,255,.09);
+}
+
+
+.reason-nav-button:active,
+.reason-next:active{
+    transform:scale(.96);
+}
+
+
+/* ==========================================================
+   MILESTONE
+========================================================== */
+
+.reason-milestone{
+    min-height:24px;
+
+    margin-top:22px;
+
+    font-size:12px;
+    line-height:1.6;
+
+    color:#aab4c8;
+
+    opacity:0;
+    transform:translateY(5px);
+
+    transition:
+        opacity .4s ease,
+        transform .4s ease;
+}
+
+
+.reason-milestone.is-visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* ==========================================================
+   FINAL
+========================================================== */
+
+.reasons-final{
+    display:none;
+
+    margin-top:55px;
+    padding-top:45px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    opacity:0;
+    transform:translateY(20px);
+}
+
+
+.reasons-final.is-visible{
+    display:block;
+
+    animation:
+        reasonsFinalReveal
+        1s ease forwards;
+}
+
+
+.reasons-final-small{
+    margin:0 0 10px;
+
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+
+    color:#8993aa;
+}
+
+
+.reasons-final h3{
+    max-width:600px;
+
+    margin:0 auto;
+
+    font-family:"Playfair Display",serif;
+    font-size:clamp(30px,6vw,48px);
+    line-height:1.2;
+
+    color:#fff;
+}
+
+
+.reasons-final > p:not(.reasons-final-small){
+    max-width:570px;
+
+    margin:20px auto 0;
+
+    font-size:14px;
+    line-height:1.8;
+
+    color:#aeb7ca;
+}
+
+
+.reasons-continue{
+    margin-top:30px;
+    padding:14px 23px;
+
+    border:1px solid rgba(255,120,178,.28);
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,120,178,.14),
+            rgba(150,180,255,.10)
+        );
+
+    color:#fff;
+
+    font-family:"Inter",sans-serif;
+    font-size:13px;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s ease,
+        background .25s ease;
+}
+
+
+.reasons-continue span{
+    margin-left:7px;
+}
+
+
+.reasons-continue:hover{
+    transform:translateY(-2px);
+    background:rgba(255,255,255,.09);
+}
+
+
+.reasons-continue:active{
+    transform:scale(.96);
+}
+
+
+/* ==========================================================
+   ANIMATION
+========================================================== */
+
+@keyframes reasonsFinalReveal{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width:600px){
+
+    .reasons-section{
+        min-height:100svh;
+        padding:90px 17px;
+    }
+
+
+    .reasons-header{
+        margin-bottom:30px;
+    }
+
+
+    .reasons-kicker{
+        font-size:9px;
+        letter-spacing:.2em;
+    }
+
+
+    .reasons-title{
+        font-size:36px;
+    }
+
+
+    .reasons-subtitle{
+        font-size:13px;
+    }
+
+
+    .reason-card{
+        min-height:360px;
+        padding:45px 24px;
+        border-radius:24px;
+    }
+
+
+    .reason-symbol{
+        margin:25px 0 22px;
+    }
+
+
+    .reason-text{
+        font-size:22px;
+        line-height:1.5;
+    }
+
+
+    .reason-small{
+        font-size:10px;
+    }
+
+
+    .reason-nav-button{
+        width:48px;
+        min-width:48px;
+    }
+
+
+    .reason-next{
+        padding:0 19px;
+    }
+
+
+    .reasons-final{
+        margin-top:45px;
+    }
+
+}
+
+
+@media (prefers-reduced-motion:reduce){
+
+    .reason-card,
+    .reasons-progress-fill,
+    .reason-milestone{
+        transition:none;
+    }
+
+}/* =========================================
+   REASONS I NEVER TOLD YOU
+========================================= */
+
+.never-told-section {
+    position: relative;
+    max-width: 850px;
+    margin: 100px auto 0;
+    padding: 70px 25px;
+    text-align: center;
+}
+
+.bonus-label {
+    display: block;
+    margin-bottom: 14px;
+    font-size: 0.68rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.55;
+}
+
+.never-told-intro h3,
+.real-reason-question h3 {
+    margin: 0;
+    font-size: clamp(1.7rem, 5vw, 2.7rem);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.never-told-intro p {
+    margin: 15px auto 30px;
+    max-width: 500px;
+    opacity: 0.65;
+    font-size: 0.95rem;
+}
+
+
+/* Reveal Button */
+
+.never-told-btn,
+.real-reason-btn {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.045);
+    color: inherit;
+    padding: 13px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.82rem;
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.never-told-btn:hover,
+.real-reason-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+
+/* Hidden Reasons */
+
+.never-told-reasons {
+    display: none;
+    margin-top: 55px;
+    gap: 18px;
+}
+
+.never-told-reasons.revealed {
+    display: grid;
+    animation: neverToldAppear 0.8s ease both;
+}
+
+.never-reason {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    align-items: center;
+    gap: 18px;
+
+    padding: 22px 24px;
+    text-align: left;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    opacity: 0;
+    transform: translateY(20px);
+    animation: neverReasonReveal 0.7s ease forwards;
+}
+
+.never-reason:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.never-reason:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.never-reason:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.never-reason:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.never-reason:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.never-reason:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.never-reason span {
+    opacity: 0.4;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+}
+
+.never-reason p {
+    margin: 0;
+    line-height: 1.7;
+    font-size: 0.92rem;
+    opacity: 0.82;
+}
+
+
+/* =========================================
+   THE REAL REASON
+========================================= */
+
+.real-reason-section {
+    position: relative;
+    max-width: 850px;
+    margin: 30px auto 0;
+    padding: 100px 25px 80px;
+    text-align: center;
+}
+
+.real-reason-question {
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.real-reason-question.hidden {
+    opacity: 0;
+    transform: translateY(-15px);
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+}
+
+.real-reason-answer {
+    display: none;
+    opacity: 0;
+    transform: scale(0.96);
+}
+
+.real-reason-answer.revealed {
+    display: block;
+    animation: realReasonReveal 1.2s ease forwards;
+}
+
+.real-reason-small {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 0.65rem;
+    letter-spacing: 5px;
+    opacity: 0.4;
+}
+
+.real-reason-answer h2 {
+    margin: 0;
+    font-size: clamp(3rem, 11vw, 6rem);
+    font-weight: 400;
+    letter-spacing: -2px;
+    line-height: 1;
+}
+
+.real-reason-answer p {
+    margin: 25px 0 20px;
+    font-size: 1rem;
+    opacity: 0.6;
+    font-style: italic;
+}
+
+.real-reason-signature {
+    display: block;
+    margin-top: 35px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    opacity: 0.45;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes neverToldAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes neverReasonReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes realReasonReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.94) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .never-told-section {
+        margin-top: 70px;
+        padding: 55px 18px;
+    }
+
+    .never-reason {
+        grid-template-columns: 30px 1fr;
+        gap: 12px;
+        padding: 18px;
+    }
+
+    .never-reason p {
+        font-size: 0.88rem;
+        line-height: 1.65;
+    }
+
+    .real-reason-section {
+        padding: 75px 18px 65px;
+    }
+
+    .real-reason-answer h2 {
+        font-size: clamp(2.8rem, 14vw, 5rem);
+    }
+
+    .real-reason-btn,
+    .never-told-btn {
+        min-height: 46px;
+        padding: 12px 19px;
+    }
+}

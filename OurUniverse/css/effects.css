@@ -1,0 +1,114 @@
+/* ==========================================================
+   OUR UNIVERSE
+   Shared Effects Module
+   Part 1 : Foundation
+========================================================== */
+
+/* ===========================
+   GLOBAL EFFECT VARIABLES
+=========================== */
+
+:root{
+
+    --ripple-duration: .65s;
+
+    --ripple-scale: 2.8;
+
+    --ripple-opacity: .28;
+
+    --glow-duration: 4s;
+
+}
+
+/* ===========================
+   RIPPLE HOST
+=========================== */
+
+.ripple-effect{
+
+    position:relative;
+
+    overflow:hidden;
+
+    isolation:isolate;
+
+}
+
+/* Ripple যেন Button-এর উপরে না আসে */
+
+.ripple-effect > *{
+
+    position:relative;
+
+    z-index:2;
+
+}/* ==========================================================
+   OUR UNIVERSE
+   Shared Effects Module
+   Part 2 : Ripple Animation
+========================================================== */
+
+/* ===========================
+   RIPPLE ELEMENT
+=========================== */
+
+.effect-ripple{
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:16px;
+    height:16px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:rgba(255,255,255,var(--ripple-opacity));
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    z-index:1;
+
+    animation:
+        rippleExpand var(--ripple-duration)
+        ease-out
+        forwards;
+
+    will-change:
+        transform,
+        opacity;
+
+}
+
+/* ===========================
+   RIPPLE KEYFRAMES
+=========================== */
+
+@keyframes rippleExpand{
+
+    0%{
+
+        transform:
+            translate(-50%, -50%)
+            scale(0);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:
+            translate(-50%, -50%)
+            scale(var(--ripple-scale));
+
+        opacity:0;
+
+    }
+
+}

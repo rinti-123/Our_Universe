@@ -1,0 +1,1287 @@
+
+
+
+
+.timeline-final{
+
+    margin-top: 80px;
+
+    color: #ffffff;
+
+    font-size: clamp(3rem,7vw,6rem);
+
+    font-weight: 700;
+
+    letter-spacing: 8px;
+
+    text-transform: uppercase;
+
+    opacity: 0;
+
+    transform: scale(.85);
+
+    filter: blur(14px);
+
+    text-shadow:
+    0 0 18px rgba(255,255,255,.25),
+    0 0 45px rgba(120,170,255,.35);
+
+}/* ==========================================================
+   STARFIELD
+========================================================== */
+
+.timeline-stars{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:1;
+
+}
+
+.star{
+
+    position:absolute;
+
+    width:3px;
+
+    height:3px;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
+    opacity:.7;
+
+    box-shadow:
+    0 0 8px rgba(255,255,255,.9);
+
+}/* ==========================================================
+   UNIVERSE TIMELINE
+   Part 2 : Reveal Animation
+========================================================== */
+
+.timeline-line,
+.timeline-final{
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease,
+        filter .9s ease;
+
+    will-change:
+        opacity,
+        transform,
+        filter;
+
+}
+
+/* যখন JavaScript এই class add করবে */
+
+.timeline-line.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+    filter:blur(0);
+
+}
+
+.timeline-final{
+
+    transition-duration:1.2s;
+
+}
+
+.timeline-final.show{
+
+    opacity:1;
+
+    transform:scale(1);
+
+    filter:blur(0);
+
+}/* ==========================================================
+   TIMELINE DISPLAY (CINEMATIC)
+========================================================== */
+
+/* ==========================================================
+   OUR UNIVERSE
+   Timeline Cinematic Display
+========================================================== */
+
+
+/* Main Container */
+
+.timeline-display{
+
+    position:relative;
+
+    z-index:2;
+
+    width:min(850px,100%);
+
+    min-height:300px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+
+/* Timeline Text */
+
+#timeline-text{
+
+    color:rgba(255,255,255,.86);
+
+    max-width:800px;
+
+    font-size:clamp(1.5rem,2.5vw,2.2rem);
+
+    font-weight:300;
+
+    line-height:2;
+
+    letter-spacing:3px;
+
+
+    opacity:0;
+
+    transform:
+    translateY(35px)
+    scale(.98);
+
+
+    filter:blur(10px);
+
+
+    text-shadow:
+
+    0 0 15px rgba(255,255,255,.15);
+
+
+    transition:
+
+    opacity 1s ease,
+
+    transform 1s ease,
+
+    filter 1s ease,
+
+    letter-spacing 1s ease;
+
+}
+
+
+
+/* Normal Reveal */
+
+#timeline-text.show{
+
+    opacity:1;
+
+    transform:
+    translateY(0)
+    scale(1);
+
+
+    filter:blur(0);
+
+}
+
+
+
+/* Fade Out */
+
+#timeline-text.hide{
+
+    opacity:0;
+
+    transform:
+    translateY(-25px)
+    scale(.98);
+
+
+    filter:blur(8px);
+
+}
+
+
+
+/* Final Moment */
+
+#timeline-text.final{
+
+    font-size:clamp(4rem,10vw,8rem);
+
+    font-weight:800;
+
+    letter-spacing:14px;
+
+    line-height:1;
+
+
+    color:#ffffff;
+
+
+    text-transform:uppercase;
+
+
+    text-shadow:
+
+    0 0 20px rgba(255,255,255,.5),
+
+    0 0 60px rgba(120,170,255,.7),
+
+    0 0 120px rgba(255,120,220,.35);
+
+
+    animation:
+
+    universePulse 3s ease infinite;
+
+}
+
+
+
+/* Final Glow Animation */
+
+@keyframes universePulse{
+
+
+    0%{
+
+        text-shadow:
+
+        0 0 20px rgba(255,255,255,.5),
+
+        0 0 60px rgba(120,170,255,.7);
+
+    }
+
+
+    50%{
+
+        text-shadow:
+
+        0 0 35px rgba(255,255,255,.8),
+
+        0 0 90px rgba(120,170,255,1);
+
+    }
+
+
+    100%{
+
+        text-shadow:
+
+        0 0 20px rgba(255,255,255,.5),
+
+        0 0 60px rgba(120,170,255,.7);
+
+    }
+
+}/* ==========================================================
+   UNIVERSE TIMELINE BACKGROUND
+========================================================== */
+
+.universe-timeline{
+
+    position:relative;
+
+    min-height:100vh;
+        isolation:isolate;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:80px 20px;
+
+
+    background:
+
+    radial-gradient(
+    circle at top,
+    rgba(100,140,255,.18),
+    transparent 45%
+    ),
+
+    radial-gradient(
+    circle at bottom,
+    rgba(255,120,220,.12),
+    transparent 50%
+    ),
+
+    #050816;
+
+}/* ==========================================================
+   TIMELINE COSMIC BACKGROUND EFFECT
+========================================================== */
+/* ==========================================================
+   FLOATING COSMIC BUBBLES
+========================================================== */
+
+
+.universe-timeline::before,
+.universe-timeline::after{
+
+    content:"";
+
+    position:absolute;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(255,255,255,.18),
+        rgba(120,160,255,.08) 35%,
+        transparent 70%
+    );
+
+
+    filter:blur(1px);
+
+    opacity:.5;
+
+}
+
+
+
+/* Bubble 1 */
+
+.universe-timeline::before{
+
+    width:260px;
+
+    height:260px;
+
+    left:10%;
+
+    bottom:-80px;
+
+
+    animation:
+
+    bubbleFloat 12s ease-in-out infinite;
+
+}
+
+
+
+/* Bubble 2 */
+
+.universe-timeline::after{
+
+    width:180px;
+
+    height:180px;
+
+    right:12%;
+
+    top:15%;
+
+
+    animation:
+
+    bubbleFloat 16s ease-in-out infinite reverse;
+
+}
+
+
+
+@keyframes bubbleFloat{
+
+
+    0%{
+
+        transform:
+        translateY(0)
+        scale(1);
+
+    }
+
+
+    50%{
+
+        transform:
+        translateY(-60px)
+        scale(1.08);
+
+    }
+
+
+    100%{
+
+        transform:
+        translateY(0)
+        scale(1);
+
+    }
+
+}/* ==========================================================
+   UNIVERSE TIMELINE
+   Typing Cursor
+========================================================== */
+
+#timeline-text::after{
+    content:"";
+    display:inline-block;
+
+    width:3px;
+    height:1.05em;
+
+    margin-left:8px;
+
+    vertical-align:-0.12em;
+
+    background:rgba(255,255,255,.85);
+
+    box-shadow:
+        0 0 8px rgba(120,180,255,.8),
+        0 0 16px rgba(180,120,255,.45);
+
+    animation:timelineCursorBlink 1s ease-in-out infinite;
+}
+
+#timeline-text.final::after{
+    display:none;
+}
+
+@keyframes timelineCursorBlink{
+
+    0%,
+    45%{
+        opacity:1;
+    }
+
+    50%,
+    100%{
+        opacity:0;
+    }
+
+}/* ==========================================================
+   UNIVERSE REMEMBERS
+   Cinematic Memory Journey
+========================================================== */
+
+.universe-remembers{
+
+    position:relative;
+
+    width:100%;
+
+    background:#02030a;
+
+    color:#fff;
+
+    overflow:hidden;
+
+}
+
+
+/* ===========================
+   BACKGROUND
+=========================== */
+
+.remembers-stars{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.48;
+
+    background-image:
+
+        radial-gradient(
+            circle at 12% 18%,
+            rgba(255,255,255,.65) 0 1px,
+            transparent 2px
+        ),
+
+        radial-gradient(
+            circle at 82% 22%,
+            rgba(255,255,255,.55) 0 1px,
+            transparent 2px
+        ),
+
+        radial-gradient(
+            circle at 30% 72%,
+            rgba(160,190,255,.55) 0 1px,
+            transparent 2px
+        ),
+
+        radial-gradient(
+            circle at 74% 82%,
+            rgba(255,255,255,.45) 0 1px,
+            transparent 2px
+        ),
+
+        radial-gradient(
+            circle at 55% 12%,
+            rgba(190,160,255,.55) 0 1px,
+            transparent 2px
+        );
+
+}
+
+
+.remembers-glow{
+
+    position:absolute;
+
+    width:650px;
+    height:650px;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%, -50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(80,105,210,.08),
+            transparent 68%
+        );
+
+    pointer-events:none;
+
+}
+
+
+/* ===========================
+   SCENES
+=========================== */
+
+.memory-scene{
+
+    position:relative;
+
+    z-index:2;
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:130px 24px;
+
+    box-sizing:border-box;
+
+}
+
+
+/* ===========================
+   INTRO
+=========================== */
+
+.memory-kicker{
+
+    margin:0 0 38px;
+
+    font-size:.72rem;
+
+    letter-spacing:6px;
+
+    text-transform:uppercase;
+
+    color:rgba(190,205,255,.58);
+
+}
+
+
+.memory-intro h2{
+
+    max-width:850px;
+
+    margin:0;
+
+    font-size:clamp(2.5rem, 6vw, 5.5rem);
+
+    line-height:1.08;
+
+    font-weight:400;
+
+    letter-spacing:-1px;
+
+}
+
+
+.memory-intro .memory-text{
+
+    margin-top:45px;
+
+}
+
+
+/* ===========================
+   LABEL
+=========================== */
+
+.memory-label{
+
+    margin:0 0 32px;
+
+    font-size:.68rem;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    color:rgba(180,200,255,.5);
+
+}
+
+
+/* ===========================
+   TITLE
+=========================== */
+
+.memory-scene h2{
+
+    margin:0;
+
+    max-width:900px;
+
+    font-size:clamp(2.5rem, 5.5vw, 5rem);
+
+    line-height:1.08;
+
+    font-weight:400;
+
+    letter-spacing:-1px;
+
+}
+
+
+/* ===========================
+   BODY TEXT
+=========================== */
+
+.memory-text{
+
+    margin:0;
+
+    max-width:720px;
+
+    font-size:clamp(1rem, 2vw, 1.3rem);
+
+    line-height:1.9;
+
+    letter-spacing:.45px;
+
+    color:rgba(235,239,255,.62);
+
+}
+
+
+/* ===========================
+   REALIZATION
+=========================== */
+
+.memory-realization .memory-text{
+
+    margin-bottom:45px;
+
+}
+
+
+.memory-realization h2{
+
+    font-size:clamp(3.5rem, 8vw, 7rem);
+
+    font-weight:500;
+
+    letter-spacing:1px;
+
+    text-shadow:
+
+        0 0 25px rgba(160,180,255,.25),
+
+        0 0 70px rgba(160,120,255,.12);
+
+}
+
+
+/* ===========================
+   FINAL SCENE
+=========================== */
+
+.memory-final{
+
+    min-height:110vh;
+
+    padding-top:150px;
+
+    padding-bottom:180px;
+
+}
+
+
+.memory-final .memory-text + .memory-text{
+
+    margin-top:45px;
+
+}
+
+
+.memory-final h2{
+
+    margin-top:60px;
+
+    font-size:clamp(3.2rem, 8vw, 7rem);
+
+    line-height:1.05;
+
+    font-weight:500;
+
+    letter-spacing:1px;
+
+}
+
+
+.memory-final h2 span{
+
+    display:inline-block;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #c5d3ff,
+            #ffffff
+        );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+
+    text-shadow:
+
+        0 0 25px rgba(150,180,255,.25),
+
+        0 0 70px rgba(170,120,255,.12);
+
+}
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:600px){
+
+    .memory-scene{
+
+        min-height:100svh;
+
+        padding:100px 20px;
+
+    }
+
+    .memory-kicker{
+
+        letter-spacing:4px;
+
+    }
+
+    .memory-label{
+
+        letter-spacing:3px;
+
+    }
+
+    .memory-text{
+
+        line-height:1.8;
+
+    }
+
+    .memory-final{
+
+        min-height:110svh;
+
+        padding-bottom:160px;
+
+    }
+
+}.memory-final h2{
+    padding:0.08em 0.12em 0.12em;
+    overflow:visible;
+    line-height:1.12;
+}/* ==========================================================
+   PROPOSAL SECTION
+   ISOLATED VERSION
+========================================================== */
+
+.proposal-section{
+
+    position:relative;
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-sizing:border-box;
+
+    padding:120px 24px;
+
+    overflow:visible;
+
+    isolation:isolate;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(100,80,180,.08),
+            transparent 48%
+        ),
+        #020208;
+
+    color:#fff;
+}
+
+
+/* ==========================================================
+   ATMOSPHERE
+========================================================== */
+
+.proposal-section .proposal-atmosphere{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:0;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(150,130,255,.06),
+            transparent 55%
+        );
+}
+
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+.proposal-section .proposal-content{
+
+    position:relative;
+
+    z-index:2;
+
+    width:min(900px,100%);
+
+    text-align:center;
+}
+
+
+/* ==========================================================
+   HEADING
+========================================================== */
+
+.proposal-section .proposal-kicker{
+
+    margin:0 0 32px;
+
+    font-size:.7rem;
+
+    letter-spacing:6px;
+
+    text-transform:uppercase;
+
+    color:rgba(195,200,255,.55);
+}
+
+
+.proposal-section .proposal-heading{
+
+    margin:0;
+
+    font-size:clamp(2.6rem,6vw,5.5rem);
+
+    line-height:1.12;
+
+    font-weight:400;
+
+    letter-spacing:-1px;
+}
+
+
+/* ==========================================================
+   ENVELOPE WRAPPER
+========================================================== */
+
+.proposal-section .proposal-envelope-wrap{
+
+    position:relative;
+
+    z-index:3;
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:80px;
+
+    padding-bottom:140px;
+}
+
+
+/* ==========================================================
+   PROPOSAL ENVELOPE
+========================================================== */
+
+.proposal-section .proposal-envelope{
+
+    position:relative;
+
+    width:min(430px,85vw);
+
+    height:290px;
+
+    margin:0;
+
+    perspective:1200px;
+
+    overflow:visible;
+}
+
+
+/* ==========================================================
+   PROPOSAL BODY
+========================================================== */
+
+.proposal-section .proposal-body{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:1;
+
+    box-sizing:border-box;
+
+    overflow:hidden;
+
+    border:1px solid rgba(190,195,255,.16);
+
+    border-radius:6px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30,31,55,.98),
+            rgba(12,13,27,.98)
+        );
+
+    box-shadow:
+
+        0 30px 80px rgba(0,0,0,.55),
+
+        0 0 35px rgba(130,120,255,.08);
+}
+
+
+/* ==========================================================
+   PROPOSAL FOLDS
+========================================================== */
+
+.proposal-section .proposal-body::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    width:71%;
+
+    height:1px;
+
+    background:rgba(210,215,255,.12);
+
+    transform-origin:left bottom;
+
+    transform:rotate(-31deg);
+}
+
+
+.proposal-section .proposal-body::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:0;
+
+    bottom:0;
+
+    width:71%;
+
+    height:1px;
+
+    background:rgba(210,215,255,.12);
+
+    transform-origin:right bottom;
+
+    transform:rotate(31deg);
+}
+
+
+/* ==========================================================
+   PROPOSAL FLAP
+========================================================== */
+
+.proposal-section .proposal-flap{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:58%;
+
+    z-index:3;
+
+    box-sizing:border-box;
+
+    border-top:1px solid rgba(210,215,255,.12);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(38,39,68,1),
+            rgba(18,19,36,1)
+        );
+
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    transform-origin:top center;
+
+    transition:
+        transform 1.1s cubic-bezier(.22,.61,.36,1);
+}
+
+
+/* ==========================================================
+   PROPOSAL LETTER
+========================================================== */
+
+.proposal-section .proposal-letter{
+
+    position:absolute;
+
+    left:8%;
+    right:8%;
+    bottom:16px;
+
+    z-index:4;
+
+    box-sizing:border-box;
+
+    width:auto;
+
+    min-height:220px;
+
+    max-height:300px;
+
+    padding:32px 28px;
+
+    margin:0;
+
+    overflow-y:auto;
+
+    border-radius:4px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffefa,
+            #e7e6df
+        );
+
+    color:#25252c;
+
+    text-align:left;
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.38);
+
+    transform:translateY(0);
+
+    transition:
+        transform 1s cubic-bezier(.22,.61,.36,1),
+        box-shadow 1s ease;
+}
+
+
+/* ==========================================================
+   PROPOSAL LETTER TEXT
+========================================================== */
+
+.proposal-section .proposal-letter p{
+
+    margin:0 0 18px;
+
+    color:#25252c;
+
+    font-family:Georgia,serif;
+
+    font-size:1rem;
+
+    line-height:1.7;
+}
+
+
+.proposal-section .proposal-letter p:last-child{
+
+    margin-bottom:0;
+}
+
+
+/* ==========================================================
+   OPENED STATE
+========================================================== */
+
+.proposal-section
+.proposal-envelope.opened
+.proposal-flap{
+
+    transform:rotateX(180deg);
+}
+
+
+.proposal-section
+.proposal-envelope.opened
+.proposal-letter{
+
+    transform:translateY(-25px);
+
+    box-shadow:
+
+        0 25px 55px rgba(0,0,0,.42),
+
+        0 0 30px rgba(170,160,255,.10);
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width:600px){
+
+    .proposal-section{
+
+        padding:100px 20px;
+
+    }
+
+    .proposal-section .proposal-kicker{
+
+        letter-spacing:4px;
+
+    }
+
+    .proposal-section .proposal-envelope-wrap{
+
+        margin-top:65px;
+
+        padding-bottom:110px;
+
+    }
+
+    .proposal-section .proposal-envelope{
+
+        width:90vw;
+
+        height:250px;
+
+    }
+
+    .proposal-section .proposal-letter{
+
+        left:7%;
+
+        right:7%;
+
+        bottom:14px;
+
+        min-height:195px;
+
+        padding:25px 20px;
+
+    }
+
+    .proposal-section .proposal-letter p{
+
+        font-size:.9rem;
+
+        line-height:1.65;
+
+    }
+
+    .proposal-section
+    .proposal-envelope.opened
+    .proposal-letter{
+
+        transform:translateY(-15px);
+
+    }
+
+}

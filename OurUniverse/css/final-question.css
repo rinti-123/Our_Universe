@@ -1,0 +1,3155 @@
+/* ==========================================================
+   OUR UNIVERSE
+   FINAL QUESTION
+========================================================== */
+
+.final-question-section {
+
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    padding: 80px 20px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(100, 85, 180, 0.22),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(40, 70, 150, 0.14),
+            transparent 50%
+        ),
+        #050713;
+
+    isolation: isolate;
+}
+
+
+/* ==========================================================
+   ATMOSPHERE
+========================================================== */
+
+.final-question-atmosphere {
+
+    position: absolute;
+
+    inset: -20%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(120, 105, 255, 0.14),
+            transparent 40%
+        );
+
+    filter: blur(35px);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
+.final-question-content {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(850px, 90%);
+
+    margin: 0 auto;
+
+    padding: 40px 20px;
+
+    text-align: center;
+}
+
+
+/* ==========================================================
+   KICKER
+========================================================== */
+
+.final-question-kicker {
+
+    margin: 0 0 28px;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.42em;
+
+    text-transform: uppercase;
+
+    color: rgba(190, 198, 255, 0.65);
+
+    text-align: center;
+}
+
+
+/* ==========================================================
+   MAIN HEADING
+========================================================== */
+
+.final-question-heading {
+
+    margin: 0 auto;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(2.2rem, 5vw, 4.4rem);
+
+    font-weight: 400;
+
+    line-height: 1.2;
+
+    color: #f3f1ff;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 30px rgba(150, 140, 255, 0.18);
+}
+
+
+/* ==========================================================
+   SECOND LINE
+========================================================== */
+
+.final-question-line {
+
+    margin: 24px auto 0;
+
+    max-width: 650px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(1.05rem, 2vw, 1.45rem);
+
+    font-style: italic;
+
+    line-height: 1.6;
+
+    color: rgba(215, 213, 240, 0.72);
+
+    text-align: center;
+}
+
+
+/* ==========================================================
+   DIVIDER
+========================================================== */
+
+.final-question-divider {
+
+    width: 80px;
+
+    height: 1px;
+
+    margin: 42px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(180, 170, 255, 0.75),
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px rgba(160, 150, 255, 0.35);
+}
+
+
+/* ==========================================================
+   ACTION
+========================================================== */
+
+.final-question-action {
+
+    margin: 42px auto 0;
+
+    text-align: center;
+}
+
+
+/* ==========================================================
+   QUESTION
+========================================================== */
+
+.final-question-prompt {
+
+    margin: 0 0 26px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(1.3rem, 2.5vw, 1.8rem);
+
+    line-height: 1.5;
+
+    font-style: italic;
+
+    color: rgba(235, 232, 255, 0.92);
+
+    text-align: center;
+
+    text-shadow:
+        0 0 20px rgba(160, 150, 255, 0.18);
+}
+
+
+/* ==========================================================
+   BUTTON
+========================================================== */
+
+.final-question-button {
+
+    display: inline-block;
+
+    padding: 15px 32px;
+
+    border: 1px solid rgba(180, 170, 255, 0.4);
+
+    border-radius: 999px;
+
+    background: rgba(15, 17, 35, 0.72);
+
+    color: #eeeaff;
+
+    font-size: 0.78rem;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+
+    backdrop-filter: blur(10px);
+}
+
+
+.final-question-button:hover {
+
+    transform: translateY(-3px);
+
+    background: rgba(80, 70, 145, 0.28);
+
+    border-color: rgba(200, 190, 255, 0.75);
+
+    box-shadow:
+        0 0 30px rgba(140, 125, 255, 0.22);
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 600px) {
+
+    .final-question-section {
+
+        padding: 60px 15px;
+    }
+
+    .final-question-content {
+
+        width: 90%;
+
+        padding: 30px 10px;
+    }
+
+    .final-question-kicker {
+
+        font-size: 0.6rem;
+
+        letter-spacing: 0.3em;
+    }
+
+    .final-question-heading {
+
+        font-size: 2.15rem;
+    }
+
+    .final-question-line {
+
+        font-size: 1rem;
+
+        line-height: 1.7;
+    }
+
+    .final-question-prompt {
+
+        font-size: 1.15rem;
+    }
+
+}/* ==========================================================
+   FINAL QUESTION
+   PART 2 : TRANSITION
+========================================================== */
+
+.final-question-section.final-transitioning
+.final-question-content {
+
+    animation:
+        finalContentFadeOut
+        1.4s
+        ease
+        forwards;
+}
+
+
+.final-question-section.final-transitioning
+.final-question-atmosphere {
+
+    animation:
+        finalAtmosphereExpand
+        2.5s
+        ease
+        forwards;
+}
+
+
+@keyframes finalContentFadeOut {
+
+    from {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
+    to {
+
+        opacity: 0;
+
+        transform:
+            scale(.96)
+            translateY(-20px);
+
+    }
+
+}
+
+
+@keyframes finalAtmosphereExpand {
+
+    from {
+
+        opacity: .5;
+
+        transform: scale(1);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1.35);
+
+    }
+
+}/* ==========================================================
+   FINAL QUESTION
+   PART 3 : FINAL REVEAL
+========================================================== */
+
+.final-question-reveal {
+
+    position: absolute;
+
+    z-index: 10;
+
+    width: min(760px, 88%);
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -42%)
+        scale(.97);
+
+    text-align: center;
+
+    opacity: 0;
+
+    transition:
+        opacity 1.8s ease,
+        transform 1.8s cubic-bezier(.22,.61,.36,1);
+
+    pointer-events: none;
+}
+
+
+.final-question-reveal.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+
+/* ===========================
+   KICKER
+=========================== */
+
+.final-reveal-kicker {
+
+    margin: 0 0 26px;
+
+    font-size: .68rem;
+
+    letter-spacing: .38em;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(190,198,255,.62);
+}
+
+
+/* ===========================
+   MAIN MESSAGE
+=========================== */
+
+.final-reveal-heading {
+
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(2.4rem, 6vw, 5rem);
+
+    font-weight: 400;
+
+    line-height: 1.15;
+
+    color: #f5f2ff;
+
+    text-shadow:
+        0 0 35px rgba(150,140,255,.2);
+}
+
+
+/* ===========================
+   SUPPORTING MESSAGE
+=========================== */
+
+.final-reveal-line {
+
+    margin: 30px auto 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(1rem, 2vw, 1.3rem);
+
+    font-style: italic;
+
+    line-height: 1.9;
+
+    color:
+        rgba(220,218,242,.72);
+}
+
+
+/* ===========================
+   DIVIDER
+=========================== */
+
+.final-reveal-divider {
+
+    width: 90px;
+
+    height: 1px;
+
+    margin: 38px auto 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(190,180,255,.75),
+            transparent
+        );
+
+    box-shadow:
+        0 0 18px rgba(150,140,255,.3);
+}/* ==========================================================
+   PART 4 : STAR FIELD
+========================================================== */
+
+.final-question-stars {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+
+/* ===========================
+   INDIVIDUAL STAR
+=========================== */
+
+.final-star {
+
+    position: absolute;
+
+    display: block;
+
+    border-radius: 50%;
+
+    background: rgba(225, 225, 255, .8);
+
+    box-shadow:
+        0 0 6px rgba(180, 175, 255, .55);
+
+    opacity: .25;
+
+    animation:
+        finalStarTwinkle
+        4s
+        ease-in-out
+        infinite;
+}
+
+
+/* ===========================
+   TWINKLE
+=========================== */
+
+@keyframes finalStarTwinkle {
+
+    0% {
+
+        opacity: .15;
+
+        transform: scale(.8);
+
+    }
+
+    50% {
+
+        opacity: .75;
+
+        transform: scale(1.25);
+
+    }
+
+    100% {
+
+        opacity: .15;
+
+        transform: scale(.8);
+
+    }
+}/* ==========================================================
+   FINAL REVEAL ATMOSPHERE
+========================================================== */
+
+.final-question-section:has(
+    .final-question-reveal.is-visible
+) {
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(105, 90, 190, .24),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(45, 65, 150, .16),
+            transparent 55%
+        ),
+        #050713;
+}
+
+
+/* ===========================
+   SOFT BREATHING GLOW
+=========================== */
+
+.final-question-reveal.is-visible
+.final-reveal-heading {
+
+    animation:
+        finalHeadingGlow
+        4s
+        ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes finalHeadingGlow {
+
+    from {
+
+        text-shadow:
+            0 0 25px
+            rgba(150, 140, 255, .12);
+
+    }
+
+    to {
+
+        text-shadow:
+            0 0 45px
+            rgba(170, 155, 255, .28);
+
+    }
+}/* ==========================================================
+   FINAL QUESTION
+   PART 6 : FUNNY QUESTION
+========================================================== */
+
+
+/* ===========================
+   FUNNY QUESTION CONTAINER
+=========================== */
+
+.final-funny-question {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: min(850px, 90%);
+
+    text-align: center;
+
+    z-index: 20;
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -45%)
+        scale(.96);
+
+    transition:
+        opacity 1.4s ease,
+        transform 1.4s ease;
+}
+
+
+/* ===========================
+   VISIBLE STATE
+=========================== */
+
+.final-funny-question.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+
+/* ===========================
+   SMALL FUNNY LINE
+=========================== */
+
+.final-funny-small {
+
+    margin: 0 0 22px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(.9rem, 2vw, 1.1rem);
+
+    font-style: italic;
+
+    color:
+        rgba(215, 213, 240, .62);
+}
+
+
+/* ===========================
+   MAIN QUESTION
+=========================== */
+
+.final-funny-heading {
+
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(2.1rem, 5vw, 4.2rem);
+
+    font-weight: 400;
+
+    line-height: 1.2;
+
+    color: #f3f1ff;
+
+    text-shadow:
+        0 0 30px
+        rgba(150, 140, 255, .18);
+}
+
+
+/* ===========================
+   BUTTON AREA
+=========================== */
+
+.final-funny-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-top: 38px;
+}
+
+
+/* ===========================
+   BOTH BUTTONS
+=========================== */
+
+.final-yes-button,
+.final-think-button {
+
+    min-width: 150px;
+
+    padding: 14px 26px;
+
+    border-radius: 999px;
+
+    font-size: .75rem;
+
+    letter-spacing: .12em;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* ===========================
+   YES BUTTON
+=========================== */
+
+.final-yes-button {
+
+    border:
+        1px solid
+        rgba(205, 195, 255, .6);
+
+    background:
+        rgba(100, 85, 180, .28);
+
+    color:
+        #f4f1ff;
+
+    box-shadow:
+        0 0 20px
+        rgba(140, 125, 255, .12);
+}
+
+
+.final-yes-button:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
+
+    background:
+        rgba(110, 95, 195, .38);
+
+    border-color:
+        rgba(220, 210, 255, .8);
+
+    box-shadow:
+        0 0 35px
+        rgba(150, 135, 255, .28);
+}
+
+
+/* ===========================
+   THINK AGAIN BUTTON
+=========================== */
+
+.final-think-button {
+
+    border:
+        1px solid
+        rgba(180, 180, 205, .28);
+
+    background:
+        rgba(20, 22, 40, .65);
+
+    color:
+        rgba(230, 228, 245, .75);
+}
+
+
+.final-think-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        rgba(45, 47, 70, .75);
+
+    border-color:
+        rgba(200, 200, 225, .45);
+}
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 600px) {
+
+    .final-funny-question {
+
+        width: 88%;
+    }
+
+
+    .final-funny-buttons {
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+
+    .final-yes-button,
+    .final-think-button {
+
+        min-width: 180px;
+    }
+
+}/* ==========================================================
+   FINAL QUESTION
+   POSITION FIX
+========================================================== */
+
+
+/* ===========================
+   OLD CINEMATIC MESSAGE
+=========================== */
+
+.final-question-reveal {
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+
+/* ===========================
+   MOVE OLD MESSAGE UP
+=========================== */
+
+.final-question-reveal.is-finished {
+
+    opacity: 0;
+
+    transform:
+        translateY(-80px);
+
+    pointer-events: none;
+}
+
+
+/* ===========================
+   FUNNY QUESTION
+=========================== */
+
+.final-funny-question {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: min(850px, 90%);
+
+    text-align: center;
+
+    z-index: 20;
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(.94);
+
+    transition:
+        opacity 1.4s ease,
+        transform 1.4s ease;
+}
+
+
+.final-funny-question.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+
+/* ===========================
+   SMALL LINE
+=========================== */
+
+.final-funny-small {
+
+    margin: 0 0 22px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(.9rem, 2vw, 1.1rem);
+
+    font-style: italic;
+
+    color:
+        rgba(215, 213, 240, .62);
+}
+
+
+/* ===========================
+   QUESTION
+=========================== */
+
+.final-funny-heading {
+
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(2rem, 5vw, 4rem);
+
+    font-weight: 400;
+
+    line-height: 1.2;
+
+    color: #f3f1ff;
+
+    text-shadow:
+        0 0 30px
+        rgba(150, 140, 255, .2);
+}
+
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.final-funny-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-top: 38px;
+}
+
+
+/* ===========================
+   YES
+=========================== */
+
+.final-yes-button {
+
+    min-width: 150px;
+
+    padding: 14px 26px;
+
+    border:
+        1px solid
+        rgba(205, 195, 255, .65);
+
+    border-radius: 999px;
+
+    background:
+        rgba(100, 85, 180, .3);
+
+    color:
+        #f4f1ff;
+
+    font-size: .75rem;
+
+    letter-spacing: .12em;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.final-yes-button:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.03);
+
+    box-shadow:
+        0 0 30px
+        rgba(150, 135, 255, .25);
+}
+
+
+/* ===========================
+   THINK AGAIN
+=========================== */
+
+.final-think-button {
+
+    min-width: 150px;
+
+    padding: 14px 26px;
+
+    border:
+        1px solid
+        rgba(180, 180, 205, .3);
+
+    border-radius: 999px;
+
+    background:
+        rgba(20, 22, 40, .7);
+
+    color:
+        rgba(230, 228, 245, .75);
+
+    font-size: .75rem;
+
+    letter-spacing: .12em;
+
+    cursor: pointer;
+}
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 600px) {
+
+    .final-funny-question {
+
+        width: 88%;
+    }
+
+    .final-funny-buttons {
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+}/* ==========================================================
+   THINK AGAIN
+   RUNAWAY BUTTON
+========================================================== */
+
+.final-think-button {
+
+    position: relative;
+
+    transition:
+        left .35s ease,
+        top .35s ease,
+        transform .25s ease;
+}/* ==========================================================
+   YES CELEBRATION
+   OUR UNIVERSE
+========================================================== */
+
+.final-celebration {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(120, 105, 255, .20),
+            transparent 45%
+        );
+
+    transition:
+        opacity 1.2s ease;
+}
+
+
+.final-celebration.is-visible {
+
+    opacity: 1;
+}
+
+
+/* ===========================
+   CELEBRATION CONTENT
+=========================== */
+
+.celebration-content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: min(850px, 90%);
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateY(25px)
+        scale(.94);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+
+.final-celebration.is-visible
+.celebration-content {
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* ===========================
+   KICKER
+=========================== */
+
+.celebration-kicker {
+
+    margin: 0 0 22px;
+
+    font-size: .7rem;
+
+    letter-spacing: .4em;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(210, 205, 255, .65);
+}
+
+
+/* ===========================
+   MAIN MESSAGE
+=========================== */
+
+.celebration-heading {
+
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(2.4rem, 6vw, 5rem);
+
+    font-weight: 400;
+
+    line-height: 1.15;
+
+    color: #f5f2ff;
+
+    text-shadow:
+        0 0 25px
+        rgba(170, 155, 255, .25),
+        0 0 60px
+        rgba(120, 105, 255, .18);
+}
+
+
+/* ===========================
+   SUB MESSAGE
+=========================== */
+
+.celebration-line {
+
+    margin: 24px 0 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(1rem, 2vw, 1.3rem);
+
+    font-style: italic;
+
+    line-height: 1.7;
+
+    color:
+        rgba(220, 217, 240, .72);
+}
+
+
+/* ===========================
+   LITTLE HEART
+=========================== */
+
+.celebration-heart {
+
+    display: inline-block;
+
+    margin-top: 30px;
+
+    font-size: 1.8rem;
+
+    animation:
+        celebrationHeart 1.8s ease-in-out infinite;
+}
+
+
+/* ===========================
+   FIREWORK BURST
+=========================== */
+
+.firework {
+
+    position: absolute;
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation:
+        fireworkAppear 1.8s ease-out forwards;
+}
+
+
+.firework-particle {
+
+    position: absolute;
+
+    width: 4px;
+
+    height: 4px;
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    animation:
+        fireworkParticle 1.4s ease-out forwards;
+}
+
+
+/* ===========================
+   SCREEN FLASH
+=========================== */
+
+.final-celebration.flash {
+
+    animation:
+        celebrationFlash .8s ease;
+}
+
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+
+@keyframes celebrationFlash {
+
+    0% {
+        background-color:
+            rgba(255,255,255,0);
+    }
+
+    35% {
+        background-color:
+            rgba(255,255,255,.12);
+    }
+
+    100% {
+        background-color:
+            rgba(255,255,255,0);
+    }
+}
+
+
+@keyframes celebrationHeart {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+
+@keyframes fireworkAppear {
+
+    0% {
+        opacity: 1;
+        transform: scale(.2);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes fireworkParticle {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            translate(0, 0)
+            scale(1);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            translate(
+                var(--particle-x),
+                var(--particle-y)
+            )
+            scale(.2);
+    }
+}/* ==========================================================
+   UNIVERSE UNLOCKED
+========================================================== */
+
+.universe-unlocked {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 120;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform: scale(.96);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+
+    pointer-events: none;
+}
+
+.universe-unlocked.is-visible {
+
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+.unlocked-content {
+
+    width: min(700px, 88%);
+
+    padding: 30px;
+}
+
+
+.unlocked-kicker {
+
+    margin: 0 0 18px;
+
+    font-size: .68rem;
+
+    letter-spacing: .4em;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(200, 195, 255, .6);
+}
+
+
+.unlocked-heading {
+
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(2.2rem, 6vw, 4.5rem);
+
+    font-weight: 400;
+
+    color: #f5f2ff;
+
+    text-shadow:
+        0 0 30px
+        rgba(150, 135, 255, .3);
+}
+
+
+.unlocked-line {
+
+    margin: 22px auto 0;
+
+    max-width: 550px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(1rem, 2vw, 1.25rem);
+
+    font-style: italic;
+
+    line-height: 1.7;
+
+    color:
+        rgba(220, 217, 240, .72);
+}
+
+
+.unlocked-emoji {
+
+    display: block;
+
+    margin-top: 28px;
+
+    font-size: 2rem;
+
+    animation:
+        unlockedFloat 2s ease-in-out infinite;
+}
+
+
+@keyframes unlockedFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}/* ==========================================================
+   YES CELEBRATION
+   FINAL CLEAN FIX
+========================================================== */
+
+
+/* OLD CONTENT MUST DISAPPEAR */
+
+.final-question-reveal.is-finished,
+.final-funny-question.is-finished {
+
+    opacity: 0 !important;
+
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+
+    transform:
+        translate(-50%, -60%)
+        scale(.92) !important;
+}
+
+
+/* FUNNY QUESTION */
+
+.final-funny-question.is-finished {
+
+    transform:
+        translate(-50%, -50%)
+        scale(.9) !important;
+}
+
+
+/* CELEBRATION LAYER */
+
+.final-celebration {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    opacity: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(100, 85, 180, .18),
+            transparent 55%
+        );
+
+    transition:
+        opacity 1s ease;
+}
+
+
+.final-celebration.is-visible {
+
+    opacity: 1;
+}
+
+
+/* CELEBRATION TEXT */
+
+.celebration-content {
+
+    position: relative;
+
+    z-index: 20;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateY(25px)
+        scale(.95);
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+
+.final-celebration.is-visible
+.celebration-content {
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* FIREWORK */
+
+.firework {
+
+    position: absolute;
+
+    width: 1px;
+
+    height: 1px;
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
+
+.firework-particle {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 8px #ffffff,
+        0 0 18px rgba(180,170,255,.9);
+
+    transform:
+        translate(-50%, -50%);
+
+    animation:
+        fireworkExplosion 1.5s ease-out forwards;
+}
+
+
+@keyframes fireworkExplosion {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            translate(0, 0)
+            scale(1);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            translate(
+                var(--particle-x),
+                var(--particle-y)
+            )
+            scale(.15);
+    }
+}
+
+
+/* UNIVERSE UNLOCKED */
+
+.universe-unlocked {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 30;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform: scale(.96);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+
+    pointer-events: none;
+}
+
+
+.universe-unlocked.is-visible {
+
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+.unlocked-content {
+
+    width: min(700px, 88%);
+
+    padding: 30px;
+}
+
+
+.unlocked-heading {
+
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(2.2rem, 6vw, 4.5rem);
+
+    font-weight: 400;
+
+    color: #f5f2ff;
+
+    text-shadow:
+        0 0 30px
+        rgba(160,145,255,.3);
+}
+
+
+.unlocked-line {
+
+    margin-top: 22px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(1rem, 2vw, 1.2rem);
+
+    font-style: italic;
+
+    line-height: 1.7;
+
+    color:
+        rgba(220,217,240,.75);
+}
+
+
+.unlocked-kicker {
+
+    margin-bottom: 18px;
+
+    font-size: .7rem;
+
+    letter-spacing: .35em;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(200,195,255,.6);
+}
+
+
+.unlocked-emoji {
+
+    display: block;
+
+    margin-top: 28px;
+
+    font-size: 2rem;
+}/* ==========================================================
+   FINAL CELEBRATION
+   CLEAN OLD CONTENT
+========================================================== */
+
+.final-question-reveal,
+.final-funny-question {
+
+    transition:
+        opacity .7s ease,
+        visibility .7s ease,
+        transform .7s ease !important;
+}
+
+
+/* যখন শেষ হয়ে যাবে */
+
+.final-question-reveal.is-finished,
+.final-funny-question.is-finished {
+
+    opacity: 0 !important;
+
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+
+    transform:
+        translateY(-30px)
+        scale(.94) !important;
+
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    width: 100% !important;
+
+    height: 100% !important;
+}
+
+
+/* ==========================================================
+   CELEBRATION
+========================================================== */
+
+.final-celebration {
+
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    z-index: 999 !important;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    text-align: center;
+
+}
+
+
+/* Celebration text */
+
+.final-celebration .celebration-content {
+
+    position: relative;
+
+    z-index: 20;
+
+    width: min(800px, 90%);
+
+    margin: 0 auto;
+
+    text-align: center;
+
+}
+
+
+/* ==========================================================
+   UNIVERSE UNLOCKED
+========================================================== */
+
+.final-celebration
+.universe-unlocked {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 50;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        #050713;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+
+.final-celebration
+.universe-unlocked.is-visible {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.final-celebration
+.unlocked-content {
+
+    position: relative;
+
+    z-index: 60;
+
+    width: min(700px, 88%);
+
+    margin: 0 auto;
+
+    text-align: center;
+}/* ==========================================================
+   FIREWORK VISUALS
+========================================================== */
+
+.firework {
+
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    z-index: 10;
+
+    pointer-events: none;
+}
+
+
+.firework-particle {
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 10px #ffffff,
+        0 0 24px rgba(180,170,255,.95),
+        0 0 40px rgba(150,130,255,.55);
+
+    transform:
+        translate(-50%, -50%);
+
+    animation:
+        fireworkExplosion
+        1.5s
+        ease-out
+        forwards;
+}
+
+
+@keyframes fireworkExplosion {
+
+    0% {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            translate(0, 0)
+            scale(1.2);
+    }
+
+    20% {
+
+        opacity: 1;
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            translate(
+                var(--particle-x),
+                var(--particle-y)
+            )
+            scale(.1);
+    }
+}/* ==========================================================
+   OUR UNIVERSE
+   CELEBRATION UPGRADE
+   PART 1 : CINEMATIC + PLAYFUL
+========================================================== */
+
+
+/* ===========================
+   CELEBRATION BACKGROUND
+=========================== */
+
+.final-celebration {
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(125, 105, 210, .20),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(70, 90, 180, .10),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(150, 110, 210, .08),
+            transparent 35%
+        ),
+        #050713 !important;
+}
+
+
+/* ===========================
+   CELEBRATION CONTENT
+=========================== */
+
+.final-celebration
+.celebration-content {
+
+    width: min(850px, 90%);
+
+    padding: 40px 25px;
+
+    text-align: center;
+
+    animation:
+        celebrationFloat
+        5s ease-in-out
+        infinite;
+}
+
+
+/* ===========================
+   KICKER
+=========================== */
+
+.celebration-kicker {
+
+    margin: 0 0 22px;
+
+    font-size: .68rem;
+
+    letter-spacing: .38em;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(205, 200, 255, .65);
+}
+
+
+/* ===========================
+   MAIN HEADING
+=========================== */
+
+.celebration-heading {
+
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(2.3rem, 6vw, 4.8rem);
+
+    font-weight: 400;
+
+    line-height: 1.15;
+
+    color: #f6f3ff;
+
+    text-shadow:
+        0 0 20px
+        rgba(180, 160, 255, .25),
+
+        0 0 60px
+        rgba(120, 100, 230, .18);
+}
+
+
+/* ===========================
+   SUBTITLE
+=========================== */
+
+.celebration-line {
+
+    margin: 24px 0 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(1rem, 2vw, 1.25rem);
+
+    font-style: italic;
+
+    line-height: 1.7;
+
+    color:
+        rgba(225, 220, 245, .72);
+}
+
+
+/* ===========================
+   HEART
+=========================== */
+
+.celebration-heart {
+
+    display: block;
+
+    margin-top: 30px;
+
+    font-size: 2rem;
+
+    color: #eeeaff;
+
+    text-shadow:
+        0 0 15px
+        rgba(190, 170, 255, .8);
+
+    animation:
+        heartPulse
+        1.8s
+        ease-in-out
+        infinite;
+}
+
+
+/* ===========================
+   FLOATING ANIMATION
+=========================== */
+
+@keyframes celebrationFloat {
+
+    0% {
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            translateY(-6px);
+    }
+
+    100% {
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ===========================
+   HEART PULSE
+=========================== */
+
+@keyframes heartPulse {
+
+    0% {
+
+        transform:
+            scale(1);
+
+        opacity: .65;
+    }
+
+    50% {
+
+        transform:
+            scale(1.18);
+
+        opacity: 1;
+    }
+
+    100% {
+
+        transform:
+            scale(1);
+
+        opacity: .65;
+    }
+}
+
+
+/* ===========================
+   UNIVERSE UNLOCKED
+=========================== */
+
+.final-celebration
+.universe-unlocked {
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(95, 80, 180, .20),
+            transparent 48%
+        ),
+        #050713 !important;
+}
+
+
+.unlocked-heading {
+
+    animation:
+        unlockedGlow
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes unlockedGlow {
+
+    0% {
+
+        text-shadow:
+            0 0 20px
+            rgba(150, 130, 255, .18);
+    }
+
+    50% {
+
+        text-shadow:
+            0 0 35px
+            rgba(180, 160, 255, .45),
+
+            0 0 70px
+            rgba(120, 100, 220, .18);
+    }
+
+    100% {
+
+        text-shadow:
+            0 0 20px
+            rgba(150, 130, 255, .18);
+    }
+}
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 600px) {
+
+    .celebration-kicker {
+
+        font-size: .58rem;
+
+        letter-spacing: .28em;
+    }
+
+    .celebration-heading {
+
+        font-size: 2.3rem;
+    }
+
+    .celebration-line {
+
+        font-size: 1rem;
+    }
+
+    .unlocked-heading {
+
+        font-size: 2.3rem;
+    }
+}/* ==========================================================
+   CELEBRATION GLOW BOOST
+========================================================== */
+
+.final-celebration {
+
+    box-shadow:
+        inset 0 0 120px rgba(120,100,230,.18);
+
+}
+
+
+/* MAIN TITLE */
+
+.final-celebration
+.celebration-heading {
+
+    text-shadow:
+
+        0 0 12px rgba(255,255,255,.30),
+
+        0 0 28px rgba(185,170,255,.55),
+
+        0 0 55px rgba(135,115,255,.42),
+
+        0 0 95px rgba(100,80,220,.25);
+
+}
+
+
+/* SMALL TEXT */
+
+.final-celebration
+.celebration-kicker {
+
+    text-shadow:
+        0 0 12px rgba(190,180,255,.45);
+}
+
+
+/* SUBTITLE */
+
+.final-celebration
+.celebration-line {
+
+    text-shadow:
+        0 0 15px rgba(170,155,255,.25);
+}
+
+
+/* HEART */
+
+.final-celebration
+.celebration-heart {
+
+    font-size: 2.3rem;
+
+    text-shadow:
+
+        0 0 10px rgba(255,255,255,.55),
+
+        0 0 25px rgba(200,185,255,.75),
+
+        0 0 50px rgba(145,125,255,.55),
+
+        0 0 80px rgba(100,80,220,.3);
+}
+
+
+/* UNIVERSE UNLOCKED */
+
+.final-celebration
+.unlocked-heading {
+
+    text-shadow:
+
+        0 0 15px rgba(255,255,255,.3),
+
+        0 0 30px rgba(190,175,255,.7),
+
+        0 0 65px rgba(145,120,255,.55),
+
+        0 0 110px rgba(100,80,220,.35);
+
+}
+
+
+/* UNLOCKED EMOJI */
+
+.final-celebration
+.unlocked-emoji {
+
+    display: block;
+
+    font-size: 2.5rem;
+
+    margin-top: 30px;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255,255,255,.5))
+        drop-shadow(0 0 25px rgba(160,140,255,.7));
+
+}/* ==========================================================
+   UNIVERSE INSIDE JOKE
+========================================================== */
+
+.universe-inside-joke {
+
+    margin: 32px auto 0;
+
+    width: min(420px, 85%);
+
+    padding: 18px 22px;
+
+    border: 1px solid
+        rgba(180,170,255,.18);
+
+    border-radius: 18px;
+
+    background:
+        rgba(15,17,35,.55);
+
+    backdrop-filter:
+        blur(12px);
+
+    box-shadow:
+        0 0 30px
+        rgba(110,95,200,.10);
+
+    opacity: 0;
+
+    transform:
+        translateY(15px)
+        scale(.96);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+
+.universe-inside-joke.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+.inside-joke-icon {
+
+    display: block;
+
+    font-size: 1.6rem;
+
+    margin-bottom: 8px;
+}
+
+
+.inside-joke-title {
+
+    margin: 0;
+
+    font-size: .95rem;
+
+    letter-spacing: .05em;
+
+    color:
+        rgba(240,238,255,.9);
+}
+
+
+.inside-joke-line {
+
+    margin: 8px 0 15px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: .85rem;
+
+    line-height: 1.5;
+
+    color:
+        rgba(210,207,235,.65);
+}
+
+
+.inside-joke-button {
+
+    padding: 7px 18px;
+
+    border: 1px solid
+        rgba(180,170,255,.3);
+
+    border-radius: 999px;
+
+    background:
+        rgba(80,70,145,.15);
+
+    color:
+        rgba(235,232,255,.85);
+
+    font-size: .68rem;
+
+    letter-spacing: .12em;
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+
+.inside-joke-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        rgba(100,85,170,.25);
+}
+
+
+.universe-inside-joke.dismissed {
+
+    opacity: 0;
+
+    transform:
+        scale(.9);
+
+    pointer-events: none;
+}/* ==========================================================
+   NASA INSIDE JOKE
+   CLEAN TWO-LINE COSMIC SCREEN
+========================================================== */
+
+.final-question-section
+.universe-unlocked::after {
+
+    content: "🛰️  NASA has been notified.";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(1.1rem, 2.2vw, 1.45rem);
+
+    line-height: 1.8;
+
+    color:
+        rgba(235, 232, 255, .92);
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(120, 100, 220, .20),
+            transparent 36%
+        ),
+        #050713;
+
+    box-shadow:
+        inset 0 0 120px
+        rgba(100, 80, 220, .18);
+
+    animation:
+        nasaScreenReveal
+        1.2s ease forwards;
+}
+
+
+/* SECOND LINE */
+
+.final-question-section
+.universe-unlocked::before {
+
+    content:
+        "Apparently this is now an officially recognized universe. 😂";
+
+    position: fixed;
+
+    left: 50%;
+    top: calc(50% + 55px);
+
+    z-index: 10000;
+
+    transform:
+        translateX(-50%);
+
+    width: min(650px, 85vw);
+
+    text-align: center;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(.9rem, 1.7vw, 1.1rem);
+
+    line-height: 1.6;
+
+    color:
+        rgba(210, 207, 235, .68);
+
+    animation:
+        nasaSecondLine
+        1.5s ease forwards;
+
+    pointer-events: none;
+}
+
+
+/* ===========================
+   REVEAL
+=========================== */
+
+@keyframes nasaScreenReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(1.04);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+@keyframes nasaSecondLine {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translate(-50%, 12px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translate(-50%, 0);
+    }
+    
+}/* ==========================================================
+   NASA SCREEN DELAY
+   Let the previous message breathe first
+========================================================== */
+
+.final-question-section
+.universe-unlocked::after {
+
+    opacity: 0;
+
+    animation:
+        nasaScreenReveal
+        1.4s
+        ease
+        3.5s
+        forwards;
+}
+
+
+.final-question-section
+.universe-unlocked::before {
+
+    opacity: 0;
+
+    animation:
+        nasaSecondLine
+        1.4s
+        ease
+        3.9s
+        forwards;
+}
+/* ==========================================================
+   OUR UNIVERSE
+   FINAL ENDING PAGE
+========================================================== */
+
+.universe-ending-section {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(100, 85, 190, .16),
+            transparent 38%
+        ),
+        #040610;
+
+    isolation: isolate;
+}
+
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.universe-ending-content {
+
+    position: relative;
+
+    z-index: 3;
+
+    width: min(760px, 88%);
+
+    padding: 80px 20px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    animation:
+        endingReveal
+        2s ease forwards;
+
+    animation-delay:
+        .5s;
+}
+
+
+/* ===========================
+   KICKER
+=========================== */
+
+.ending-kicker {
+
+    margin: 0 0 25px;
+
+    font-size: .68rem;
+
+    letter-spacing: .45em;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(190, 185, 230, .58);
+}
+
+
+/* ===========================
+   MAIN
+=========================== */
+
+.ending-heading {
+
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(3rem, 8vw, 6.5rem);
+
+    font-weight: 400;
+
+    letter-spacing: -.03em;
+
+    color:
+        #f4f1ff;
+
+    text-shadow:
+        0 0 30px
+        rgba(150, 135, 255, .18);
+}
+
+
+.ending-line {
+
+    margin: 8px 0 0;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(1.1rem, 2vw, 1.45rem);
+
+    font-style: italic;
+
+    color:
+        rgba(215, 211, 235, .62);
+}
+
+
+/* ===========================
+   DIVIDER
+=========================== */
+
+.ending-divider {
+
+    width: 90px;
+
+    height: 1px;
+
+    margin: 38px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(185, 175, 255, .65),
+            transparent
+        );
+}
+
+
+/* ===========================
+   MESSAGE
+=========================== */
+
+.ending-message {
+
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(1rem, 2vw, 1.35rem);
+
+    line-height: 1.8;
+
+    color:
+        rgba(225, 221, 242, .72);
+}
+
+
+/* ===========================
+   FINAL SETUP
+=========================== */
+
+.ending-final {
+
+    margin: 48px 0 0;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(.95rem, 1.8vw, 1.2rem);
+
+    line-height: 1.8;
+
+    color:
+        rgba(205, 200, 225, .55);
+}
+
+
+.ending-last-line {
+
+    margin: 20px 0 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(1.6rem, 4vw, 2.8rem);
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    color:
+        #eeeaff;
+
+    text-shadow:
+        0 0 25px
+        rgba(150, 135, 255, .28);
+}
+
+
+/* ===========================
+   SIGNATURE
+=========================== */
+
+.ending-signature {
+
+    margin: 35px 0 0;
+
+    font-size: .62rem;
+
+    letter-spacing: .5em;
+
+    color:
+        rgba(185, 180, 220, .45);
+}
+
+
+/* ===========================
+   REPLAY
+=========================== */
+
+.ending-replay-button {
+
+    margin-top: 38px;
+
+    padding: 12px 24px;
+
+    border:
+        1px solid
+        rgba(180, 170, 255, .25);
+
+    border-radius: 999px;
+
+    background:
+        rgba(15, 17, 35, .5);
+
+    color:
+        rgba(225, 222, 245, .72);
+
+    font-size: .68rem;
+
+    letter-spacing: .14em;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.ending-replay-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(80, 70, 145, .2);
+
+    border-color:
+        rgba(200, 190, 255, .6);
+
+    box-shadow:
+        0 0 25px
+        rgba(140, 125, 255, .18);
+}
+
+
+/* ===========================
+   REVEAL
+=========================== */
+
+@keyframes endingReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:600px) {
+
+    .ending-message {
+
+        font-size: 1rem;
+
+    }
+
+    .ending-final {
+
+        font-size: .95rem;
+
+    }
+
+    .ending-signature {
+
+        letter-spacing: .32em;
+
+    }
+
+}/* ==========================================================
+   FINAL ENDING
+   INITIAL HIDDEN STATE
+========================================================== */
+
+.universe-ending-section {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translateY(30px);
+
+    transition:
+        opacity 1.8s ease,
+        transform 1.8s ease,
+        visibility 1.8s ease;
+}
+
+
+/* ===========================
+   ACTIVE ENDING
+=========================== */
+
+.universe-ending-section.is-visible {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(0);
+}

@@ -1,0 +1,846 @@
+/* ==========================================================
+   OUR UNIVERSE
+   Loading Screen Module
+   Part 1 : Foundation
+========================================================== */
+
+/* ===========================
+   LOADING SCREEN
+=========================== */
+
+#loading-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle at top,
+    rgba(96,138,255,.18),
+    transparent 45%),
+
+    linear-gradient(
+    180deg,
+    #04050A 0%,
+    #09101D 50%,
+    #04050A 100%);
+
+    z-index:99999;
+
+    transition:
+    opacity .9s ease,
+    visibility .9s ease;
+
+}
+
+/* Hidden State */
+
+#loading-screen.hidden{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+}
+
+/* ===========================
+   CENTER CONTAINER
+=========================== */
+
+.loading-container{
+
+    position:relative;
+
+    width:min(92%,380px);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+}
+
+/* ===========================
+   TITLE
+=========================== */
+
+.loading-title{
+
+    margin-top:24px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:#ffffff;
+
+    letter-spacing:.5px;
+
+}
+
+/* ===========================
+   TEXT
+=========================== */
+
+.loading-text{
+
+    margin-top:14px;
+
+    min-height:26px;
+
+    color:var(--moon);
+
+    font-size:.95rem;
+
+    letter-spacing:1px;
+
+    transition:
+    opacity .35s ease,
+    transform .35s ease;
+
+}
+
+/* ===========================
+   LOADING BAR
+=========================== */
+
+.loading-bar{
+
+    margin-top:34px;
+
+    width:100%;
+
+    height:8px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(12px);
+
+}
+
+/* Progress */
+
+.loading-progress{
+
+    width:0;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        90deg,
+        var(--moon),
+        var(--pink)
+    );
+
+    transition:width .2s linear;
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:480px){
+
+    .loading-title{
+
+        font-size:1.8rem;
+
+    }
+
+    .loading-text{
+
+        font-size:.9rem;
+
+    }
+
+}/* ==========================================================
+   LOADING SCREEN
+   Part 2 : Moon
+========================================================== */
+
+/* ===========================
+   MOON AREA
+=========================== */
+
+.moon-loader{
+
+    position:relative;
+
+    width:150px;
+
+    height:150px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* ===========================
+   OUTER GLOW
+=========================== */
+
+.moon-loader::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+
+    height:150px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+        circle,
+        rgba(175,203,255,.20),
+        rgba(175,203,255,.05),
+        transparent 75%
+    );
+
+    filter:blur(18px);
+
+    animation:moonPulse 5s ease-in-out infinite;
+
+}
+
+/* ===========================
+   MOON
+=========================== */
+
+.moon{
+
+    position:relative;
+
+    width:84px;
+
+    height:84px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    background:
+
+        /* Large craters */
+
+        radial-gradient(
+            circle at 28% 30%,
+            rgba(115,125,145,.28) 0%,
+            rgba(115,125,145,.20) 7%,
+            transparent 8%
+        ),
+
+        radial-gradient(
+            circle at 67% 25%,
+            rgba(105,115,135,.22) 0%,
+            rgba(105,115,135,.15) 9%,
+            transparent 10%
+        ),
+
+        radial-gradient(
+            circle at 72% 64%,
+            rgba(100,110,130,.25) 0%,
+            rgba(100,110,130,.16) 8%,
+            transparent 9%
+        ),
+
+        radial-gradient(
+            circle at 35% 72%,
+            rgba(120,130,145,.20) 0%,
+            rgba(120,130,145,.13) 11%,
+            transparent 12%
+        ),
+
+        /* Small craters */
+
+        radial-gradient(
+            circle at 48% 43%,
+            rgba(110,120,140,.20) 0%,
+            transparent 5%
+        ),
+
+        radial-gradient(
+            circle at 20% 57%,
+            rgba(100,110,130,.18) 0%,
+            transparent 5%
+        ),
+
+        radial-gradient(
+            circle at 82% 42%,
+            rgba(100,110,130,.16) 0%,
+            transparent 4%
+        ),
+
+        radial-gradient(
+            circle at 55% 82%,
+            rgba(105,115,135,.18) 0%,
+            transparent 5%
+        ),
+
+        /* Moon surface */
+
+        radial-gradient(
+            circle at 35% 30%,
+            #ffffff 0%,
+            #eef3fa 35%,
+            #d5dce7 72%,
+            #aeb8c8 100%
+        );
+
+    box-shadow:
+
+        inset -14px -8px 18px
+        rgba(35,42,58,.42),
+
+        inset 8px 6px 14px
+        rgba(255,255,255,.65),
+
+        0 0 18px
+        rgba(255,255,255,.20),
+
+        0 0 42px
+        rgba(175,203,255,.38);
+
+    animation:
+
+        moonFloat 5s ease-in-out infinite,
+
+        moonRotate 16s linear infinite;
+
+}
+
+
+/* ===========================
+   MOON SURFACE TEXTURE
+=========================== */
+
+.moon::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle at 22% 34%,
+            rgba(100,110,125,.16) 0 2px,
+            transparent 3px
+        ),
+
+        radial-gradient(
+            circle at 42% 24%,
+            rgba(100,110,125,.12) 0 1.5px,
+            transparent 2.5px
+        ),
+
+        radial-gradient(
+            circle at 58% 42%,
+            rgba(100,110,125,.14) 0 2px,
+            transparent 3px
+        ),
+
+        radial-gradient(
+            circle at 30% 62%,
+            rgba(100,110,125,.11) 0 1.5px,
+            transparent 2.5px
+        ),
+
+        radial-gradient(
+            circle at 70% 68%,
+            rgba(100,110,125,.13) 0 2px,
+            transparent 3px
+        ),
+
+        radial-gradient(
+            circle at 78% 38%,
+            rgba(100,110,125,.10) 0 1.5px,
+            transparent 2.5px
+        );
+
+    opacity:.75;
+
+    pointer-events:none;
+
+}
+
+
+/* ===========================
+   MOON DARK SIDE + CRATERS
+=========================== */
+
+.moon::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle at 74% 30%,
+            rgba(120,130,145,.08) 0 2px,
+            transparent 3px
+        ),
+
+        radial-gradient(
+            circle at 82% 52%,
+            rgba(120,130,145,.07) 0 2px,
+            transparent 3px
+        ),
+
+        radial-gradient(
+            circle at 68% 72%,
+            rgba(120,130,145,.07) 0 2px,
+            transparent 3px
+        ),
+
+        linear-gradient(
+            110deg,
+            transparent 42%,
+            rgba(25,30,42,.10) 58%,
+            rgba(10,14,24,.34) 100%
+        );
+
+    opacity:.7;
+
+    pointer-events:none;
+
+}
+/* ===========================
+   MOON SHADOW
+=========================== */
+
+
+
+
+
+/* ===========================
+   SOFT RING
+=========================== */
+
+.moon-loader::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:110px;
+
+    height:110px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(175,203,255,.12);
+    box-shadow:
+    0 0 25px rgba(175,203,255,.08);
+
+}
+
+/* ===========================
+   LOADING TEXT EFFECT
+=========================== */
+
+.loading-text{
+
+    text-shadow:
+
+        0 0 12px rgba(175,203,255,.20);
+
+}/* ==========================================================
+   LOADING SCREEN
+   Part 3 : Final Polish
+========================================================== */
+
+/* ===========================
+   PROGRESS BAR SHINE
+=========================== */
+
+.loading-progress{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* ==========================================================
+   LOADING SCREEN — FINAL CINEMATIC POLISH
+========================================================== */
+
+/* Smooth progress fill */
+.loading-progress {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 14px rgba(175, 203, 255, 0.14);
+}
+
+/* Moving shine */
+.loading-progress::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 42%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.42),
+        transparent
+    );
+
+    transform: translateX(-180%);
+    animation: loadingShine 3.2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Text transition */
+.loading-text {
+    will-change: opacity, transform;
+}
+
+.loading-text.is-changing {
+    opacity: 0;
+    transform: translateY(5px);
+}
+
+/* Soft entrance */
+.loading-container {
+    animation: loadingContainerIn 1.4s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.moon-loader {
+    animation: moonLoaderIn 1.6s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+
+/* ==========================================================
+   LOADING ANIMATIONS
+========================================================== */
+
+@keyframes loadingShine {
+
+    0% {
+        transform: translateX(-180%);
+    }
+
+    45%,
+    100% {
+        transform: translateX(270%);
+    }
+
+}
+
+@keyframes loadingContainerIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+@keyframes moonLoaderIn {
+
+    from {
+        opacity: 0;
+        transform: scale(.80);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+
+/* ==========================================================
+   SAFER MOTION
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .loading-container,
+    .moon-loader {
+        animation: none !important;
+    }
+
+    .loading-progress::after {
+        animation: none !important;
+    }
+
+}
+/* ===========================
+   TEXT SMOOTHNESS
+=========================== */
+
+.loading-text{
+
+    will-change:opacity, transform;
+
+}
+
+/* ===========================
+   MOON PERFORMANCE
+=========================== */
+
+.moon,
+.moon-loader::before{
+
+    will-change:transform, opacity;
+
+    transform:translateZ(0);
+
+    backface-visibility:hidden;
+
+}
+
+/* ===========================
+   BAR PERFORMANCE
+=========================== */
+
+.loading-progress{
+
+    will-change:width;
+
+}
+
+/* ===========================
+   ACCESSIBILITY
+=========================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    .moon,
+    .moon-loader::before,
+    .loading-progress::after{
+
+        animation:none !important;
+
+    }
+
+}
+
+/* ===========================
+   SMALL DEVICES
+=========================== */
+
+@media (max-width:360px){
+
+    .moon-loader{
+
+        width:120px;
+
+        height:120px;
+
+    }
+
+    .moon{
+
+        width:72px;
+
+        height:72px;
+
+    }
+
+    .loading-title{
+
+        font-size:1.6rem;
+
+    }
+
+}
+
+/* ===========================
+   END OF LOADING MODULE
+=========================== */
+/* ==========================================================
+   LOADING SCREEN
+   Final Cinematic Polish
+========================================================== */
+
+/* Progress bar shine animation */
+.loading-progress::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:45%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.38),
+        transparent
+    );
+
+    transform:translateX(-180%);
+
+    animation:loadingShine 2.8s ease-in-out infinite;
+
+}
+
+
+/* Smooth loading text transition */
+.loading-text.is-changing{
+
+    opacity:0;
+
+    transform:translateY(5px);
+
+}
+
+
+/* Slight cinematic entrance */
+.loading-container{
+
+    animation:loadingContainerIn 1.2s ease both;
+
+}
+
+
+/* Moon gentle entrance */
+.moon-loader{
+
+    animation:moonLoaderIn 1.4s cubic-bezier(.22,1,.36,1) both;
+
+}
+
+
+/* Progress glow */
+.loading-progress{
+
+    box-shadow:
+        0 0 12px rgba(175,203,255,.12);
+
+}
+
+
+/* ==========================================================
+   KEYFRAMES
+========================================================== */
+
+@keyframes loadingShine{
+
+    0%{
+        transform:translateX(-180%);
+    }
+
+    55%,
+    100%{
+        transform:translateX(260%);
+    }
+
+}
+
+
+@keyframes loadingContainerIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(14px)
+                   scale(.98);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0)
+                   scale(1);
+
+    }
+
+}
+
+
+@keyframes moonLoaderIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.82);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+========================================================== */
+
+@media (prefers-reduced-motion:reduce){
+
+    .loading-container,
+    .moon-loader{
+
+        animation:none !important;
+
+    }
+
+}
