@@ -320,3 +320,62 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 });
+/* ==========================================================
+   MOBILE TIMELINE CARD EXPAND
+========================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const timelineCards =
+        document.querySelectorAll(
+            "#timeline .timeline-card"
+        );
+
+    if (!timelineCards.length) {
+        return;
+    }
+
+
+    timelineCards.forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            if (
+                window.innerWidth > 768
+            ) {
+                return;
+            }
+
+
+            const wasExpanded =
+                card.classList.contains(
+                    "timeline-expanded"
+                );
+
+
+            /* Close every card */
+
+            timelineCards.forEach(otherCard => {
+
+                otherCard.classList.remove(
+                    "timeline-expanded"
+                );
+
+            });
+
+
+            /* Toggle selected card */
+
+            if (!wasExpanded) {
+
+                card.classList.add(
+                    "timeline-expanded"
+                );
+
+            }
+
+        });
+
+    });
+
+});

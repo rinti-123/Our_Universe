@@ -347,7 +347,7 @@
 
         <!-- CHAPTER 01 -->
 
-        <article class="book-chapter">
+        <article class="book-chapter" data-chapter="1">
 
             <div class="chapter-top">
 
@@ -380,7 +380,7 @@
 
         <!-- CHAPTER 02 -->
 
-        <article class="book-chapter">
+        <article class="book-chapter" data-chapter="2">
 
             <div class="chapter-top">
 
@@ -413,7 +413,7 @@
 
         <!-- CHAPTER 03 -->
 
-        <article class="book-chapter">
+        <article class="book-chapter" data-chapter="3">
 
             <div class="chapter-top">
 
@@ -445,7 +445,7 @@
 
         <!-- CHAPTER 04 -->
 
-        <article class="book-chapter">
+        <article class="book-chapter" data-chapter="4">
 
             <div class="chapter-top">
 
@@ -477,7 +477,7 @@
 
         <!-- CHAPTER 05 -->
 
-        <article class="book-chapter">
+        <article class="book-chapter" data-chapter="5">
 
             <div class="chapter-top">
 
@@ -509,7 +509,7 @@
 
         <!-- CHAPTER 06 -->
 
-        <article class="book-chapter">
+       <article class="book-chapter" data-chapter="6">
 
             <div class="chapter-top">
 
@@ -541,7 +541,7 @@
 
         <!-- CHAPTER 07 -->
 
-        <article class="book-chapter">
+        <article class="book-chapter" data-chapter="7">
 
             <div class="chapter-top">
 
@@ -574,7 +574,7 @@
 
         <!-- CHAPTER 08 -->
 
-        <article class="book-chapter">
+        <article class="book-chapter" data-chapter="8">
 
             <div class="chapter-top">
 
@@ -607,7 +607,7 @@
 
         <!-- CHAPTER 09 -->
 
-        <article class="book-chapter future-chapter">
+        <article class="book-chapter future-chapter" data-chapter="9">
 
             <div class="chapter-top">
 
@@ -645,6 +645,173 @@
     </div>
 
 </section>
+<!-- =========================================
+     CHAPTER READER
+========================================= -->
+
+<div class="chapter-reader" id="chapterReader" aria-hidden="true">
+
+    <div class="chapter-reader-backdrop"></div>
+
+    <div class="chapter-page">
+
+        <button
+            class="chapter-reader-close"
+            id="chapterReaderClose"
+            type="button"
+            aria-label="Close chapter"
+        >
+            ×
+        </button>
+
+        <div class="chapter-page-glow"></div>
+
+        <div class="chapter-page-header">
+
+            <span class="reader-chapter-number" id="readerChapterNumber">
+                CHAPTER 01
+            </span>
+
+            <span class="reader-chapter-symbol" id="readerChapterSymbol">
+                ✦
+            </span>
+
+        </div>
+
+        <div class="chapter-page-title">
+
+            <h2 id="readerChapterTitle">
+                The Beginning
+            </h2>
+
+            <p id="readerChapterSubtitle">
+                Before we became anything, we were simply two people.
+            </p>
+
+        </div>
+
+        <div class="chapter-page-divider">
+            <span>✦</span>
+        </div>
+
+        <div class="chapter-moments" id="chapterMoments">
+            <!-- JavaScript will insert story moments here -->
+        </div>
+
+        <div class="chapter-ending">
+
+            <span class="ending-star">✧</span>
+
+            <p id="readerChapterEnding"></p>
+
+            <span class="ending-line"></span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================================
+     STORY BOOK CHAPTER VIEWER
+========================================= -->
+
+<div
+    class="chapter-reader"
+    id="chapterReader"
+    aria-hidden="true"
+>
+
+    <div class="chapter-reader-backdrop"></div>
+
+    <div class="chapter-page">
+
+        <button
+            class="chapter-reader-close"
+            id="chapterReaderClose"
+            type="button"
+            aria-label="Close chapter"
+        >
+            ×
+        </button>
+
+
+        <div class="chapter-page-inner">
+
+            <div class="chapter-page-top">
+
+                <span
+                    class="reader-chapter-number"
+                    id="readerChapterNumber"
+                >
+                    CHAPTER 01
+                </span>
+
+                <span
+                    class="reader-chapter-symbol"
+                    id="readerChapterSymbol"
+                >
+                    ✦
+                </span>
+
+            </div>
+
+
+            <div class="chapter-page-heading">
+
+                <span class="reader-eyebrow">
+                    A PAGE FROM OUR STORY
+                </span>
+
+                <h2 id="readerChapterTitle">
+                    The Beginning
+                </h2>
+
+                <p id="readerChapterSubtitle">
+                    The friendship that started everything.
+                </p>
+
+            </div>
+
+
+            <div
+                class="chapter-story"
+                id="chapterStory"
+            >
+            </div>
+
+
+            <div class="chapter-page-ending">
+
+                <span class="reader-ending-symbol">
+                    ✦
+                </span>
+
+                <p id="readerChapterEnding">
+                    And somehow, that was where our story began.
+                </p>
+
+                <span class="reader-signature">
+                    — Rin Tin Tin 🌙
+                </span>
+
+            </div>
+
+
+            <button
+                class="chapter-close-button"
+                id="chapterCloseButton"
+                type="button"
+            >
+                Close This Chapter
+                <span>×</span>
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 <!-- =========================================
      BEFORE YOU / AFTER YOU
@@ -1198,7 +1365,7 @@
                 id="choice-me"
                 type="button"
             >
-                Definitely You 🙄
+                Obviously Me 😌
             </button>
 
             <button
@@ -1206,7 +1373,7 @@
                 id="choice-you"
                 type="button"
             >
-                Obviously Me 😌
+                Definitely You 🙄
             </button>
 
         </div>

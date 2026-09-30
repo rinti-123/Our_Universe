@@ -243,6 +243,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             });
 
+
+            /* ==================================================
+               MOBILE JOYSTICK
+            ================================================== */
+
+            createMobileJoystick(
+                funnyQuestion
+            );
+
         }, 5200);
 
     });
@@ -250,11 +259,104 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* ======================================================
        THINK AGAIN
-       RUNAWAY BUTTON
+       DESKTOP RUNAWAY SYSTEM
     ====================================================== */
 
     let thinkAttempts = 0;
 
+
+    function moveThinkButton(
+        thinkButton,
+        funnyQuestion
+    ) {
+
+        if (!thinkButton || !funnyQuestion) {
+            return;
+        }
+
+
+        thinkAttempts++;
+
+
+        /* ===========================
+           FUNNY TEXT
+        =========================== */
+
+        if (thinkAttempts === 1) {
+
+            thinkButton.textContent =
+                "ARE YOU SURE? 👀";
+
+        }
+
+        else if (thinkAttempts === 2) {
+
+            thinkButton.textContent =
+                "NICE TRY 😂";
+
+        }
+
+        else if (thinkAttempts === 3) {
+
+            thinkButton.textContent =
+                "NOPE 😭";
+
+        }
+
+        else {
+
+            thinkButton.textContent =
+                "YOU CAN'T ESCAPE ✋";
+        }
+
+
+        /* ===========================
+           RANDOM ESCAPE
+        =========================== */
+
+        const rect =
+            funnyQuestion.getBoundingClientRect();
+
+
+        const maxX =
+            Math.max(
+                100,
+                Math.min(
+                    180,
+                    rect.width / 2 - 60
+                )
+            );
+
+
+        const maxY =
+            Math.max(
+                80,
+                Math.min(
+                    120,
+                    rect.height / 2 - 40
+                )
+            );
+
+
+        const randomX =
+            (Math.random() * maxX * 2) -
+            maxX;
+
+
+        const randomY =
+            (Math.random() * maxY * 2) -
+            maxY;
+
+
+        thinkButton.style.transform =
+            `translate(${randomX}px, ${randomY}px)`;
+
+    }
+
+
+    /* ======================================================
+       DESKTOP MOUSEOVER
+    ====================================================== */
 
     document.addEventListener(
         "mouseover",
@@ -270,6 +372,19 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
+            /* ------------------------------------------
+               PHONE-এ mouseover system চালাবো না
+            ------------------------------------------ */
+
+            if (
+                window.matchMedia(
+                    "(max-width: 768px)"
+                ).matches
+            ) {
+                return;
+            }
+
+
             const funnyQuestion =
                 thinkButton.closest(
                     ".final-funny-question"
@@ -280,12 +395,219 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
+            moveThinkButton(
+                thinkButton,
+                funnyQuestion
+            );
+
+        }
+    );
+
+
+    /* ======================================================
+       MOBILE JOYSTICK CREATOR
+    ====================================================== */
+
+    function createMobileJoystick(
+        funnyQuestion
+    ) {
+
+        /* ------------------------------------------
+           আগে থেকে থাকলে duplicate বানাবে না
+        ------------------------------------------ */
+
+        const existingJoystick =
+            finalSection.querySelector(
+                ".mobile-proposal-joystick"
+            );
+
+        if (existingJoystick) {
+
+            existingJoystick.remove();
+
+        }
+
+
+        const joystick =
+            document.createElement("div");
+
+        joystick.className =
+            "mobile-proposal-joystick";
+
+
+        joystick.innerHTML = `
+
+            <div class="joystick-label">
+                MOVE IT 😈
+            </div>
+
+            <div class="joystick-pad">
+
+                <button
+                    type="button"
+                    class="joystick-button joystick-up"
+                    aria-label="Move up">
+                    ↑
+                </button>
+
+                <button
+                    type="button"
+                    class="joystick-button joystick-left"
+                    aria-label="Move left">
+                    ←
+                </button>
+
+                <button
+                    type="button"
+                    class="joystick-button joystick-center"
+                    aria-label="Reset">
+                    ●
+                </button>
+
+                <button
+                    type="button"
+                    class="joystick-button joystick-right"
+                    aria-label="Move right">
+                    →
+                </button>
+
+                <button
+                    type="button"
+                    class="joystick-button joystick-down"
+                    aria-label="Move down">
+                    ↓
+                </button>
+
+            </div>
+
+        `;
+
+
+        finalSection.appendChild(
+            joystick
+        );
+
+
+        /* ==================================================
+           BUTTONS
+        ================================================== */
+
+        const up =
+            joystick.querySelector(
+                ".joystick-up"
+            );
+
+        const left =
+            joystick.querySelector(
+                ".joystick-left"
+            );
+
+        const center =
+            joystick.querySelector(
+                ".joystick-center"
+            );
+
+        const right =
+            joystick.querySelector(
+                ".joystick-right"
+            );
+
+        const down =
+            joystick.querySelector(
+                ".joystick-down"
+            );
+
+
+        /* ==================================================
+           MOVE FUNCTION
+        ================================================== */
+
+        function moveDirection(
+            direction
+        ) {
+
+            const thinkButton =
+                funnyQuestion.querySelector(
+                    ".final-think-button"
+                );
+
+            if (!thinkButton) {
+                return;
+            }
+
+
+            let currentX =
+                Number(
+                    thinkButton.dataset.joystickX || 0
+                );
+
+            let currentY =
+                Number(
+                    thinkButton.dataset.joystickY || 0
+                );
+
+
+            const step = 45;
+
+
+            if (direction === "up") {
+                currentY -= step;
+            }
+
+            if (direction === "down") {
+                currentY += step;
+            }
+
+            if (direction === "left") {
+                currentX -= step;
+            }
+
+            if (direction === "right") {
+                currentX += step;
+            }
+
+
+            /* ------------------------------------------
+               সীমা
+            ------------------------------------------ */
+
+            currentX =
+                Math.max(
+                    -150,
+                    Math.min(
+                        150,
+                        currentX
+                    )
+                );
+
+
+            currentY =
+                Math.max(
+                    -100,
+                    Math.min(
+                        100,
+                        currentY
+                    )
+                );
+
+
+            thinkButton.dataset.joystickX =
+                currentX;
+
+            thinkButton.dataset.joystickY =
+                currentY;
+
+
+            thinkButton.style.transform =
+                `translate(${currentX}px, ${currentY}px)`;
+
+
+            /* ------------------------------------------
+               Funny text
+            ------------------------------------------ */
+
             thinkAttempts++;
 
-
-            /* ===========================
-               FUNNY TEXT
-            =========================== */
 
             if (thinkAttempts === 1) {
 
@@ -314,718 +636,563 @@ document.addEventListener("DOMContentLoaded", () => {
                     "YOU CAN'T ESCAPE ✋";
             }
 
-
-            /* ===========================
-               RANDOM ESCAPE
-            =========================== */
-
-            const rect =
-                funnyQuestion.getBoundingClientRect();
+        }
 
 
-            const maxX =
-                Math.max(
-                    100,
-                    rect.width / 2 - 120
+        /* ==================================================
+           RESET
+        ================================================== */
+
+        function resetThinkButton() {
+
+            const thinkButton =
+                funnyQuestion.querySelector(
+                    ".final-think-button"
                 );
 
-
-            const maxY =
-                Math.max(
-                    80,
-                    rect.height / 2 - 80
-                );
+            if (!thinkButton) {
+                return;
+            }
 
 
-            const randomX =
-                (Math.random() * maxX * 2) -
-                maxX;
+            thinkButton.dataset.joystickX =
+                "0";
 
-
-            const randomY =
-                (Math.random() * maxY * 2) -
-                maxY;
+            thinkButton.dataset.joystickY =
+                "0";
 
 
             thinkButton.style.transform =
-                `translate(${randomX}px, ${randomY}px)`;
+                "translate(0, 0)";
 
         }
+
+
+        /* ==================================================
+           TOUCH / POINTER EVENTS
+        ================================================== */
+
+        function bindJoystick(
+            button,
+            direction
+        ) {
+
+            if (!button) {
+                return;
+            }
+
+
+            button.addEventListener(
+                "pointerdown",
+                (event) => {
+
+                    event.preventDefault();
+
+                    if (
+                        direction ===
+                        "center"
+                    ) {
+
+                        resetThinkButton();
+
+                        return;
+                    }
+
+
+                    moveDirection(
+                        direction
+                    );
+
+                }
+            );
+
+        }
+
+
+        bindJoystick(
+            up,
+            "up"
+        );
+
+        bindJoystick(
+            left,
+            "left"
+        );
+
+        bindJoystick(
+            center,
+            "center"
+        );
+
+        bindJoystick(
+            right,
+            "right"
+        );
+
+        bindJoystick(
+            down,
+            "down"
+        );
+
+
+        /* ==================================================
+           PHONE-এ SHOW
+        ================================================== */
+
+        if (
+            window.matchMedia(
+                "(max-width: 768px)"
+            ).matches
+        ) {
+
+            requestAnimationFrame(() => {
+
+                joystick.classList.add(
+                    "is-visible"
+                );
+
+            });
+
+        }
+
+    }
+
+
+    /* ======================================================
+       YES BUTTON
+       FINAL CELEBRATION
+    ====================================================== */
+
+    document.addEventListener(
+        "click",
+        (event) => {
+
+            const yesButton =
+                event.target.closest(
+                    ".final-yes-button"
+                );
+
+            if (!yesButton) {
+                return;
+            }
+
+
+            /* ===========================
+               GET OLD ELEMENTS
+            =========================== */
+
+            const funnyQuestion =
+                document.querySelector(
+                    ".final-funny-question"
+                );
+
+            const oldReveal =
+                document.querySelector(
+                    ".final-question-reveal"
+                );
+
+            const joystick =
+                document.querySelector(
+                    ".mobile-proposal-joystick"
+                );
+
+
+            /* ===========================
+               REMOVE OLD CONTENT
+            =========================== */
+
+            if (funnyQuestion) {
+
+                funnyQuestion.classList.add(
+                    "is-finished"
+                );
+
+            }
+
+
+            if (oldReveal) {
+
+                oldReveal.classList.add(
+                    "is-finished"
+                );
+
+            }
+
+
+            if (joystick) {
+
+                joystick.classList.remove(
+                    "is-visible"
+                );
+
+                setTimeout(() => {
+
+                    joystick.remove();
+
+                }, 600);
+
+            }
+
+
+            /* ===========================
+               CREATE CELEBRATION
+            =========================== */
+
+            const celebration =
+                document.createElement("div");
+
+            celebration.className =
+                "final-celebration";
+
+
+            celebration.innerHTML = `
+
+                <div class="celebration-content">
+
+                    <p class="celebration-kicker">
+                        THE UNIVERSE HAS DECIDED
+                    </p>
+
+                    <h2 class="celebration-heading">
+                        THE UNIVERSE SAID YES. ✨
+                    </h2>
+
+                    <p class="celebration-line">
+                        Well... that escalated beautifully.
+                    </p>
+
+                    <span class="celebration-heart">
+                        ♡
+                    </span>
+
+                </div>
+
+            `;
+
+
+            finalSection.appendChild(
+                celebration
+            );
+
+
+            /* ===========================
+               SHOW CELEBRATION
+            =========================== */
+
+            requestAnimationFrame(() => {
+
+                celebration.classList.add(
+                    "is-visible"
+                );
+
+            });
+
+
+            /* ==================================================
+               FIREWORK FUNCTION
+            ================================================== */
+
+            function createFirework(
+                x,
+                y
+            ) {
+
+                const firework =
+                    document.createElement("div");
+
+                firework.className =
+                    "firework";
+
+                firework.style.left =
+                    x + "%";
+
+                firework.style.top =
+                    y + "%";
+
+
+                for (let i = 0; i < 32; i++) {
+
+                    const particle =
+                        document.createElement("span");
+
+                    particle.className =
+                        "firework-particle";
+
+
+                    const angle =
+                        (Math.PI * 2 / 32) * i;
+
+
+                    const distance =
+                        55 +
+                        Math.random() * 75;
+
+
+                    const moveX =
+                        Math.cos(angle) *
+                        distance;
+
+
+                    const moveY =
+                        Math.sin(angle) *
+                        distance;
+
+
+                    particle.style.setProperty(
+                        "--particle-x",
+                        moveX + "px"
+                    );
+
+
+                    particle.style.setProperty(
+                        "--particle-y",
+                        moveY + "px"
+                    );
+
+
+                    firework.appendChild(
+                        particle
+                    );
+
+                }
+
+
+                celebration.appendChild(
+                    firework
+                );
+
+            }
+
+
+            /* ==================================================
+               FIREWORKS
+            ================================================== */
+
+            setTimeout(() => {
+                createFirework(20, 28);
+            }, 300);
+
+
+            setTimeout(() => {
+                createFirework(78, 25);
+            }, 650);
+
+
+            setTimeout(() => {
+                createFirework(50, 18);
+            }, 1000);
+
+
+            setTimeout(() => {
+                createFirework(30, 65);
+            }, 1350);
+
+
+            setTimeout(() => {
+                createFirework(72, 65);
+            }, 1700);
+
+
+            setTimeout(() => {
+                createFirework(50, 75);
+            }, 2100);
+
+
+            /* ==================================================
+               UNIVERSE UNLOCKED
+               + NASA INSIDE JOKE
+            ================================================== */
+
+            setTimeout(() => {
+
+                const unlocked =
+                    document.createElement("div");
+
+                unlocked.className =
+                    "universe-unlocked";
+
+
+                unlocked.innerHTML = `
+
+                    <div class="unlocked-content">
+
+                        <p class="unlocked-kicker">
+                            CONNECTION CONFIRMED
+                        </p>
+
+                        <h2 class="unlocked-heading">
+                            Universe Unlocked ✨
+                        </h2>
+
+                        <p class="unlocked-line">
+                            Congratulations.<br>
+                            You have officially survived
+                            the most dramatic question
+                            in the entire universe.
+                        </p>
+
+                        <span class="unlocked-emoji">
+                            🌌
+                        </span>
+
+
+                        <div class="universe-inside-joke">
+
+                            <span class="inside-joke-icon">
+                                🛰️
+                            </span>
+
+                            <p class="inside-joke-title">
+                                NASA has been notified.
+                            </p>
+
+                            <p class="inside-joke-line">
+                                Apparently this is now
+                                an officially recognized universe.
+                            </p>
+
+                            <button
+                                type="button"
+                                class="inside-joke-button">
+
+                                okay 😂
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                celebration.appendChild(
+                    unlocked
+                );
+
+
+                requestAnimationFrame(() => {
+
+                    unlocked.classList.add(
+                        "is-visible"
+                    );
+
+                });
+
+
+                /* ===========================
+                   NASA JOKE BUTTON
+                =========================== */
+
+                const jokeButton =
+                    unlocked.querySelector(
+                        ".inside-joke-button"
+                    );
+
+
+                if (jokeButton) {
+
+                    jokeButton.addEventListener(
+                        "click",
+                        () => {
+
+                            const joke =
+                                unlocked.querySelector(
+                                    ".universe-inside-joke"
+                                );
+
+                            if (!joke) {
+                                return;
+                            }
+
+
+                            joke.style.transition =
+                                "opacity .5s ease, transform .5s ease";
+
+                            joke.style.opacity =
+                                "0";
+
+                            joke.style.transform =
+                                "scale(.9)";
+
+                            setTimeout(() => {
+
+                                joke.style.display =
+                                    "none";
+
+                            }, 500);
+
+                        }
+                    );
+
+                }
+
+            }, 4200);
+
+
+            /* ==================================================
+               FINAL ENDING PAGE
+            ================================================== */
+
+            setTimeout(() => {
+
+                const ending =
+                    document.querySelector(
+                        ".universe-ending-section"
+                    );
+
+                if (!ending) {
+
+                    console.warn(
+                        "Final ending section not found."
+                    );
+
+                    return;
+                }
+
+
+                ending.classList.add(
+                    "is-visible"
+                );
+
+
+                console.log(
+                    "FINAL ENDING REVEALED"
+                );
+
+            }, 9500);
+
+        }
+
     );
 
 
     /* ======================================================
-   YES BUTTON
-   FINAL CELEBRATION
-====================================================== */
-
-document.addEventListener("click", (event) => {
-
-    const yesButton =
-        event.target.closest(
-            ".final-yes-button"
-        );
-
-    if (!yesButton) {
-        return;
-    }
-
-
-    /* ===========================
-       GET OLD ELEMENTS
-    =========================== */
-
-    const funnyQuestion =
-        document.querySelector(
-            ".final-funny-question"
-        );
-
-    const oldReveal =
-        document.querySelector(
-            ".final-question-reveal"
-        );
-
-
-    /* ===========================
-       REMOVE OLD CONTENT
-    =========================== */
-
-    if (funnyQuestion) {
-
-        funnyQuestion.classList.add(
-            "is-finished"
-        );
-    }
-
-
-    if (oldReveal) {
-
-        oldReveal.classList.add(
-            "is-finished"
-        );
-    }
-
-
-    /* ===========================
-       CREATE CELEBRATION
-    =========================== */
-
-    const celebration =
-        document.createElement("div");
-
-    celebration.className =
-        "final-celebration";
-
-
-    celebration.innerHTML = `
-
-        <div class="celebration-content">
-
-            <p class="celebration-kicker">
-                THE UNIVERSE HAS DECIDED
-            </p>
-
-            <h2 class="celebration-heading">
-                THE UNIVERSE SAID YES. ✨
-            </h2>
-
-            <p class="celebration-line">
-                Well... that escalated beautifully.
-            </p>
-
-            <span class="celebration-heart">
-                ♡
-            </span>
-
-        </div>
-
-    `;
-
-
-    finalSection.appendChild(
-        celebration
-    );
-
-
-    /* ===========================
-       SHOW CELEBRATION
-    =========================== */
-
-    requestAnimationFrame(() => {
-
-        celebration.classList.add(
-            "is-visible"
-        );
-
-    });
-
-
-    /* ==================================================
-       FIREWORK FUNCTION
-    ================================================== */
-
-    function createFirework(x, y) {
-
-        const firework =
-            document.createElement("div");
-
-        firework.className =
-            "firework";
-
-        firework.style.left =
-            x + "%";
-
-        firework.style.top =
-            y + "%";
-
-
-        for (let i = 0; i < 32; i++) {
-
-            const particle =
-                document.createElement("span");
-
-            particle.className =
-                "firework-particle";
-
-
-            const angle =
-                (Math.PI * 2 / 32) * i;
-
-            const distance =
-                55 + Math.random() * 75;
-
-            const moveX =
-                Math.cos(angle) *
-                distance;
-
-            const moveY =
-                Math.sin(angle) *
-                distance;
-
-
-            particle.style.setProperty(
-                "--particle-x",
-                moveX + "px"
-            );
-
-            particle.style.setProperty(
-                "--particle-y",
-                moveY + "px"
-            );
-
-
-            firework.appendChild(
-                particle
-            );
-        }
-
-
-        celebration.appendChild(
-            firework
-        );
-    }
-
-
-    /* ==================================================
-       FIREWORKS
-    ================================================== */
-
-    setTimeout(() => {
-        createFirework(20, 28);
-    }, 300);
-
-    setTimeout(() => {
-        createFirework(78, 25);
-    }, 650);
-
-    setTimeout(() => {
-        createFirework(50, 18);
-    }, 1000);
-
-    setTimeout(() => {
-        createFirework(30, 65);
-    }, 1350);
-
-    setTimeout(() => {
-        createFirework(72, 65);
-    }, 1700);
-
-    setTimeout(() => {
-        createFirework(50, 75);
-    }, 2100);
-
-
-    /* ==================================================
-       UNIVERSE UNLOCKED
-    ================================================== */
-
-    setTimeout(() => {
-
-        const unlocked =
-            document.createElement("div");
-
-        unlocked.className =
-            "universe-unlocked";
-
-
-        unlocked.innerHTML = `
-
-            <div class="unlocked-content">
-
-                <p class="unlocked-kicker">
-                    CONNECTION CONFIRMED
-                </p>
-
-                <h2 class="unlocked-heading">
-                    Universe Unlocked ✨
-                </h2>
-
-                <p class="unlocked-line">
-                    Congratulations.<br>
-                    You survived the most dramatic
-                    question in the entire universe.
-                </p>
-
-                <span class="unlocked-emoji">
-                    🌌
-                </span>
-                <div class="universe-inside-joke">
-
-    <span class="inside-joke-icon">
-        🛰️
-    </span>
-
-    <p class="inside-joke-title">
-        NASA has been notified.
-    </p>
-
-    <p class="inside-joke-line">
-        Apparently this is now
-        an officially recognized universe.
-    </p>
-
-    <button
-        type="button"
-        class="inside-joke-button">
-
-        okay 😂
-
-    </button>
-
-</div>
-
-            </div>
-
-        `;
-
-
-        celebration.appendChild(
-            unlocked
-        );
-
-
-        requestAnimationFrame(() => {
-
-            unlocked.classList.add(
-                "is-visible"
-            );
-
-        });
-
-    }, 4300);
-
-});
-
-
-    /* ==================================================
-       FIREWORK FUNCTION
-    ================================================== */
-
-    function createFirework(x, y) {
-
-        const firework =
-            document.createElement("div");
-
-        firework.className =
-            "firework";
-
-        firework.style.left =
-            x + "%";
-
-        firework.style.top =
-            y + "%";
-
-
-        for (let i = 0; i < 32; i++) {
-
-            const particle =
-                document.createElement("span");
-
-            particle.className =
-                "firework-particle";
-
-
-            const angle =
-                (Math.PI * 2 / 32) * i;
-
-
-            const distance =
-                55 + Math.random() * 75;
-
-
-            const moveX =
-                Math.cos(angle) *
-                distance;
-
-
-            const moveY =
-                Math.sin(angle) *
-                distance;
-
-
-            particle.style.setProperty(
-                "--particle-x",
-                moveX + "px"
-            );
-
-
-            particle.style.setProperty(
-                "--particle-y",
-                moveY + "px"
-            );
-
-
-            firework.appendChild(
-                particle
-            );
-        }
-
-
-        celebration.appendChild(
-            firework
-        );
-    }
-
-
-    /* ==================================================
-       FIREWORKS
-    ================================================== */
-
-    setTimeout(() => {
-        createFirework(20, 28);
-    }, 300);
-
-
-    setTimeout(() => {
-        createFirework(78, 25);
-    }, 650);
-
-
-    setTimeout(() => {
-        createFirework(50, 18);
-    }, 1000);
-
-
-    setTimeout(() => {
-        createFirework(30, 65);
-    }, 1350);
-
-
-    setTimeout(() => {
-        createFirework(72, 65);
-    }, 1700);
-
-
-    setTimeout(() => {
-        createFirework(50, 75);
-    }, 2100);
-
-
-    /* ==================================================
-   UNIVERSE UNLOCKED
-   + NASA INSIDE JOKE
-================================================== */
-
-setTimeout(() => {
-
-    const unlocked =
-        document.createElement("div");
-
-    unlocked.className =
-        "universe-unlocked";
-
-
-    unlocked.innerHTML = `
-
-        <div class="unlocked-content">
-
-            <p class="unlocked-kicker">
-                CONNECTION CONFIRMED
-            </p>
-
-            <h2 class="unlocked-heading">
-                Universe Unlocked ✨
-            </h2>
-
-            <p class="unlocked-line">
-                Congratulations.<br>
-                You have officially survived
-                the most dramatic question
-                in the entire universe.
-            </p>
-
-            <span class="unlocked-emoji">
-                🌌
-            </span>
-
-
-            <div
-                class="universe-inside-joke"
-                style="
-                    margin:30px auto 0;
-                    padding:18px 22px;
-                    width:min(420px,85%);
-                    box-sizing:border-box;
-                    border:1px solid rgba(180,170,255,.25);
-                    border-radius:18px;
-                    background:rgba(15,17,35,.72);
-                    backdrop-filter:blur(12px);
-                    text-align:center;
-                    opacity:1;
-                    visibility:visible;
-                "
-            >
-
-                <div
-                    style="
-                        font-size:1.7rem;
-                        margin-bottom:8px;
-                    "
-                >
-                    🛰️
-                </div>
-
-                <p
-                    style="
-                        margin:0;
-                        font-size:.95rem;
-                        color:rgba(240,238,255,.95);
-                    "
-                >
-                    NASA has been notified.
-                </p>
-
-                <p
-                    style="
-                        margin:8px 0 15px;
-                        font-family:Georgia,serif;
-                        font-size:.85rem;
-                        line-height:1.5;
-                        color:rgba(210,207,235,.72);
-                    "
-                >
-                    Apparently this is now
-                    an officially recognized universe.
-                </p>
-
-                <button
-                    type="button"
-                    class="inside-joke-button"
-                    style="
-                        padding:8px 18px;
-                        border:1px solid
-                            rgba(180,170,255,.35);
-                        border-radius:999px;
-                        background:
-                            rgba(80,70,145,.2);
-                        color:#eeeaff;
-                        cursor:pointer;
-                    "
-                >
-                    okay 😂
-                </button>
-
-            </div>
-
-        </div>
-
-    `;
-
-
-    /* ===========================
-       ADD TO CELEBRATION
-    =========================== */
-
-    celebration.appendChild(
-        unlocked
-    );
-
-
-    /* ===========================
-       SHOW
-    =========================== */
-
-    requestAnimationFrame(() => {
-
-        unlocked.classList.add(
-            "is-visible"
-        );
-
-    });
-
-
-    /* ===========================
-       OKAY BUTTON
-    =========================== */
-
-    const jokeButton =
-        unlocked.querySelector(
-            ".inside-joke-button"
-        );
-
-
-    if (jokeButton) {
-
-        jokeButton.addEventListener(
-            "click",
-            () => {
-
-                const joke =
-                    unlocked.querySelector(
-                        ".universe-inside-joke"
-                    );
-
-                if (joke) {
-
-                    joke.style.transition =
-                        "opacity .5s ease, transform .5s ease";
-
-                    joke.style.opacity = "0";
-
-                    joke.style.transform =
-                        "scale(.9)";
-
-                }
-
-            }
-        );
-
-    }
-
-}, 4200);
-
-
-    /* ===========================
-       ADD TO CELEBRATION
-    =========================== */
-
-    celebration.appendChild(
-        unlocked
-    );
-
-
-    /* ===========================
-       SHOW UNIVERSE
-    =========================== */
-
-    requestAnimationFrame(() => {
-
-        unlocked.classList.add(
-            "is-visible"
-        );
-
-    });
-
-
-    /* ===========================
-       JOKE BUTTON
-    =========================== */
-
-    const jokeButton =
-        unlocked.querySelector(
-            ".inside-joke-button"
-        );
-
-
-    if (jokeButton) {
-
-        jokeButton.addEventListener(
-            "click",
-            () => {
-
-                const joke =
-                    unlocked.querySelector(
-                        ".universe-inside-joke"
-                    );
-
-                if (joke) {
-
-                    joke.classList.add(
-                        "dismissed"
-                    );
-
-                }
-
-            }
-        );
-
-    }
-
-}, 4300);
-
- /* ==================================================
-    FINAL ENDING PAGE
-    REVEAL
-================================================== */
-
-setTimeout(() => {
-
-    const ending =
-        document.querySelector(
-            ".universe-ending-section"
-        );
-
-    if (!ending) {
-
-        console.warn(
-            "Final ending section not found."
-        );
-
-        return;
-    }
-
-
-    ending.classList.add(
-        "is-visible"
-    );
-
-
-    console.log(
-        "FINAL ENDING REVEALED"
-    );
-
-}, 9500);
-document.addEventListener("DOMContentLoaded", () => {
+       REPLAY BUTTON
+    ====================================================== */
 
     const replayButton =
         document.querySelector(
             "#ending-replay-button"
         );
 
-    if (!replayButton) {
-        return;
+
+    if (replayButton) {
+
+        replayButton.addEventListener(
+            "click",
+            () => {
+
+                window.location.reload();
+
+            }
+        );
+
     }
 
-    replayButton.addEventListener(
-        "click",
-        () => {
-
-            window.location.reload();
-
-        }
-    );
-
 });
+
+
 /* ==========================================================
    MEMORY AUTO SCROLL
    Cinematic Journey
@@ -1034,14 +1201,25 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
 
     const memorySection =
-        document.querySelector(".universe-remembers");
+        document.querySelector(
+            ".universe-remembers"
+        );
 
     const memoryScenes =
-        document.querySelectorAll(".universe-remembers .memory-scene");
+        document.querySelectorAll(
+            ".universe-remembers .memory-scene"
+        );
 
-    if (!memorySection || memoryScenes.length < 2) {
+
+    if (
+        !memorySection ||
+        memoryScenes.length < 2
+    ) {
+
         return;
+
     }
+
 
     let currentScene = 0;
     let timer = null;
@@ -1049,40 +1227,58 @@ document.addEventListener("DOMContentLoaded", () => {
     let userScrolling = false;
 
 
-    /* ===========================
+    /* ======================================================
        GO TO NEXT MEMORY
-    =========================== */
+    ====================================================== */
 
-    function nextMemory(){
+    function nextMemory() {
 
-        if (!sectionActive || userScrolling) {
+        if (
+            !sectionActive ||
+            userScrolling
+        ) {
+
             return;
+
         }
 
-        if(currentScene >= memoryScenes.length - 1){
+
+        if (
+            currentScene >=
+            memoryScenes.length - 1
+        ) {
 
             clearInterval(timer);
 
             return;
+
         }
+
 
         currentScene++;
 
-        memoryScenes[currentScene].scrollIntoView({
-            behavior:"smooth",
-            block:"start"
+
+        memoryScenes[
+            currentScene
+        ].scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "start"
+
         });
 
     }
 
 
-    /* ===========================
+    /* ======================================================
        START JOURNEY
-    =========================== */
+    ====================================================== */
 
-    function startJourney(){
+    function startJourney() {
 
         clearInterval(timer);
+
 
         timer = setInterval(() => {
 
@@ -1093,69 +1289,98 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* ===========================
+    /* ======================================================
        DETECT MEMORY SECTION
-    =========================== */
+    ====================================================== */
 
     const sectionObserver =
         new IntersectionObserver(
+
             (entries) => {
 
-                entries.forEach(entry => {
+                entries.forEach(
+                    (entry) => {
 
-                    if(entry.isIntersecting){
+                        if (
+                            entry.isIntersecting
+                        ) {
 
-                        sectionActive = true;
+                            sectionActive =
+                                true;
 
-                        startJourney();
+                            startJourney();
 
-                    }else{
+                        }
 
-                        sectionActive = false;
+                        else {
 
-                        clearInterval(timer);
+                            sectionActive =
+                                false;
+
+                            clearInterval(
+                                timer
+                            );
+
+                        }
 
                     }
-
-                });
+                );
 
             },
+
             {
-                threshold:0.15
+                threshold: 0.15
             }
+
         );
 
 
-    sectionObserver.observe(memorySection);
+    sectionObserver.observe(
+        memorySection
+    );
 
 
-    /* ===========================
+    /* ======================================================
        MANUAL SCROLL
-    =========================== */
+    ====================================================== */
 
     window.addEventListener(
         "wheel",
         () => {
 
-            userScrolling = true;
+            userScrolling =
+                true;
+
 
             clearTimeout(
                 window.memoryManualScroll
             );
 
+
             window.memoryManualScroll =
-                setTimeout(() => {
+                setTimeout(
+                    () => {
 
-                    userScrolling = false;
+                        userScrolling =
+                            false;
 
-                    if(sectionActive){
-                        startJourney();
-                    }
 
-                }, 2500);
+                        if (
+                            sectionActive
+                        ) {
+
+                            startJourney();
+
+                        }
+
+                    },
+                    2500
+                );
 
         },
-        { passive:true }
+        {
+            passive: true
+        }
     );
 
 });

@@ -1377,4 +1377,1714 @@
 
     }
 
+}/* =========================================================
+   STORY BOOK — CHAPTER READER
+========================================================= */
+
+.book-chapter {
+    cursor: pointer;
+}
+
+.book-chapter::after {
+    content: "OPEN CHAPTER →";
+    position: absolute;
+    right: 28px;
+    bottom: 22px;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 0.48rem;
+    letter-spacing: 3px;
+
+    opacity: 0;
+    transform: translateY(5px);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+.book-chapter:hover::after {
+    opacity: 0.35;
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   READER OVERLAY
+========================================================= */
+
+.chapter-reader {
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        rgba(2, 4, 12, 0.88);
+
+    backdrop-filter: blur(18px);
+
+    opacity: 0;
+}
+
+
+.chapter-reader.visible {
+    display: flex;
+
+    animation:
+        chapterReaderIn 0.5s ease forwards;
+}
+
+
+/* =========================================================
+   BACKDROP
+========================================================= */
+
+.chapter-reader-backdrop {
+    position: absolute;
+    inset: 0;
+}
+
+
+/* =========================================================
+   BOOK PAGE
+========================================================= */
+
+.chapter-page {
+    position: relative;
+
+    width: min(900px, 100%);
+
+    max-height: 88vh;
+
+    overflow-y: auto;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.13);
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(150,170,255,0.08),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(18,23,42,0.98),
+            rgba(7,10,22,0.98)
+        );
+
+    box-shadow:
+        0 35px 100px
+        rgba(0,0,0,0.65),
+        0 0 80px
+        rgba(100,120,255,0.08);
+
+    transform:
+        translateY(30px)
+        scale(0.96);
+
+    animation:
+        chapterPageOpen 0.65s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+
+/* scrollbar */
+
+.chapter-page::-webkit-scrollbar {
+    width: 4px;
+}
+
+.chapter-page::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chapter-page::-webkit-scrollbar-thumb {
+    background:
+        rgba(255,255,255,0.18);
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   INNER PAGE
+========================================================= */
+
+.chapter-page-inner {
+    position: relative;
+
+    padding:
+        65px
+        70px
+        60px;
+}
+
+
+/* =========================================================
+   CLOSE X
+========================================================= */
+
+.chapter-reader-close {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    z-index: 5;
+
+    width: 42px;
+    height: 42px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.13);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    color: white;
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.chapter-reader-close:hover {
+    transform: rotate(90deg);
+
+    background:
+        rgba(255,255,255,0.08);
+
+    border-color:
+        rgba(255,255,255,0.3);
+}
+
+
+/* =========================================================
+   TOP
+========================================================= */
+
+.chapter-page-top {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 55px;
+}
+
+.reader-chapter-number {
+    font-family: "Poppins", sans-serif;
+
+    font-size: 0.55rem;
+
+    letter-spacing: 4px;
+
+    opacity: 0.35;
+}
+
+.reader-chapter-symbol {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.5rem;
+
+    opacity: 0.45;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.chapter-page-heading {
+    text-align: center;
+
+    max-width: 700px;
+
+    margin: 0 auto 55px;
+}
+
+.reader-eyebrow {
+    display: block;
+
+    margin-bottom: 18px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 0.52rem;
+
+    letter-spacing: 5px;
+
+    opacity: 0.32;
+}
+
+.chapter-page-heading h2 {
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        clamp(3rem, 8vw, 5.5rem);
+
+    font-weight: 400;
+
+    line-height: 0.95;
+}
+
+.chapter-page-heading p {
+    margin: 22px auto 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 1.25rem;
+
+    font-style: italic;
+
+    opacity: 0.5;
+}
+
+
+/* =========================================================
+   STORY MOMENTS
+========================================================= */
+
+.chapter-story {
+    max-width: 650px;
+
+    margin: 0 auto;
+}
+
+.chapter-moment {
+    position: relative;
+
+    padding:
+        0
+        0
+        38px
+        38px;
+
+    margin-bottom: 38px;
+
+    border-left:
+        1px solid
+        rgba(255,255,255,0.12);
+}
+
+.chapter-moment::before {
+    content: "";
+
+    position: absolute;
+
+    left: -4px;
+    top: 4px;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,0.7);
+
+    box-shadow:
+        0 0 15px
+        rgba(160,170,255,0.4);
+}
+
+.chapter-moment-number {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 0.5rem;
+
+    letter-spacing: 3px;
+
+    opacity: 0.28;
+}
+
+.chapter-moment h3 {
+    margin: 0 0 12px;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 1.8rem;
+
+    font-weight: 500;
+}
+
+.chapter-moment p {
+    margin: 0;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 0.78rem;
+
+    line-height: 2.05;
+
+    opacity: 0.55;
+}
+
+
+/* =========================================================
+   PAGE ENDING
+========================================================= */
+
+.chapter-page-ending {
+    max-width: 650px;
+
+    margin: 20px auto 45px;
+
+    padding-top: 30px;
+
+    text-align: center;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.08);
+}
+
+.reader-ending-symbol {
+    display: block;
+
+    margin-bottom: 18px;
+
+    font-size: 0.9rem;
+
+    opacity: 0.4;
+}
+
+.chapter-page-ending p {
+    margin: 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 1.45rem;
+
+    font-style: italic;
+
+    line-height: 1.5;
+
+    opacity: 0.65;
+}
+
+.reader-signature {
+    display: block;
+
+    margin-top: 22px;
+
+    font-size: 0.58rem;
+
+    letter-spacing: 3px;
+
+    opacity: 0.3;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.chapter-close-button {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    margin: 0 auto;
+
+    padding: 13px 22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    background:
+        rgba(255,255,255,0.035);
+
+    color: white;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 0.55rem;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.chapter-close-button:hover {
+    transform: translateY(-2px);
+
+    background:
+        rgba(255,255,255,0.08);
+
+    border-color:
+        rgba(255,255,255,0.25);
+}
+
+.chapter-close-button span {
+    font-size: 1rem;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes chapterReaderIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+@keyframes chapterPageOpen {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(35px)
+            scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .book-chapter::after {
+        display: none;
+    }
+
+    .chapter-reader {
+        padding: 12px;
+    }
+
+    .chapter-page {
+        max-height: 92vh;
+    }
+
+    .chapter-page-inner {
+        padding:
+            48px
+            25px
+            40px;
+    }
+
+    .chapter-page-top {
+        margin-bottom: 40px;
+    }
+
+    .chapter-page-heading {
+        margin-bottom: 42px;
+    }
+
+    .chapter-page-heading h2 {
+        font-size:
+            clamp(2.8rem, 14vw, 4rem);
+    }
+
+    .chapter-page-heading p {
+        font-size: 1.05rem;
+
+        line-height: 1.5;
+    }
+
+    .chapter-moment {
+        padding-left: 25px;
+
+        margin-bottom: 32px;
+    }
+
+    .chapter-moment h3 {
+        font-size: 1.55rem;
+    }
+
+    .chapter-moment p {
+        font-size: 0.74rem;
+
+        line-height: 1.9;
+    }
+
+    .chapter-reader-close {
+        top: 12px;
+        right: 12px;
+
+        width: 38px;
+        height: 38px;
+    }
+
+}
+/* =========================================
+   CHAPTER READER
+========================================= */
+
+.chapter-reader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.45s ease,
+        visibility 0.45s ease;
+}
+
+.chapter-reader.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Background */
+
+.chapter-reader-backdrop {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(91, 83, 180, 0.20),
+            transparent 45%
+        ),
+        rgba(3, 5, 18, 0.88);
+
+    backdrop-filter: blur(14px);
+}
+
+/* Page */
+
+.chapter-page {
+    position: relative;
+
+    width: min(900px, 100%);
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 55px 55px 50px;
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 23, 48, 0.97),
+            rgba(7, 10, 27, 0.98)
+        );
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.65),
+        0 0 80px rgba(92, 78, 180, 0.12);
+
+    transform: translateY(35px) scale(0.96);
+
+    transition:
+        transform 0.55s cubic-bezier(.2,.8,.2,1);
+
+    scrollbar-width: thin;
+}
+
+.chapter-reader.is-open .chapter-page {
+    transform: translateY(0) scale(1);
+}
+
+/* Soft glow */
+
+.chapter-page-glow {
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    top: -100px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(111, 91, 190, 0.16);
+
+    filter: blur(70px);
+
+    pointer-events: none;
+}
+
+/* Close */
+
+.chapter-reader-close {
+    position: absolute;
+
+    top: 18px;
+    right: 20px;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.05);
+
+    color: rgba(255,255,255,0.75);
+
+    font-size: 27px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.chapter-reader-close:hover {
+    transform: rotate(90deg);
+
+    background: rgba(255,255,255,0.10);
+
+    color: white;
+}
+
+/* Header */
+
+.chapter-page-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.reader-chapter-number {
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: rgba(255,255,255,0.45);
+}
+
+.reader-chapter-symbol {
+    font-size: 22px;
+
+    color: rgba(190,180,255,0.85);
+
+    text-shadow:
+        0 0 18px rgba(150,130,255,0.65);
+}
+
+/* Title */
+
+.chapter-page-title {
+    position: relative;
+
+    text-align: center;
+
+    padding: 10px 20px 5px;
+}
+
+.chapter-page-title h2 {
+    margin: 0;
+
+    font-size: clamp(30px, 5vw, 48px);
+
+    font-weight: 500;
+
+    letter-spacing: -1px;
+
+    color: rgba(255,255,255,0.94);
+}
+
+.chapter-page-title p {
+    max-width: 620px;
+
+    margin: 14px auto 0;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    color: rgba(255,255,255,0.50);
+}
+
+/* Divider */
+
+.chapter-page-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    margin: 32px auto;
+
+    color: rgba(180,165,255,0.7);
+}
+
+.chapter-page-divider::before,
+.chapter-page-divider::after {
+    content: "";
+
+    width: 100px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.15)
+        );
+}
+
+.chapter-page-divider::after {
+    transform: rotate(180deg);
+}
+
+/* Moments */
+
+.chapter-moments {
+    display: flex;
+    flex-direction: column;
+
+    gap: 22px;
+}
+
+.chapter-moment {
+    position: relative;
+
+    padding: 25px 27px;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.045),
+            rgba(255,255,255,0.018)
+        );
+
+    border: 1px solid rgba(255,255,255,0.065);
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    animation: chapterMomentIn 0.7s ease forwards;
+}
+
+.chapter-moment::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 18px;
+    bottom: 18px;
+
+    width: 2px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(155,135,255,0.7),
+            transparent
+        );
+}
+
+.chapter-moment h3 {
+    margin: 0 0 9px 5px;
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+    color: rgba(255,255,255,0.88);
+}
+
+.chapter-moment p {
+    margin: 0 0 0 5px;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+
+    color: rgba(255,255,255,0.58);
+}
+
+/* Ending */
+
+.chapter-ending {
+    text-align: center;
+
+    padding-top: 38px;
+}
+
+.ending-star {
+    display: block;
+
+    margin-bottom: 16px;
+
+    font-size: 20px;
+
+    color: rgba(190,175,255,0.8);
+}
+
+.chapter-ending p {
+    max-width: 650px;
+
+    margin: auto;
+
+    font-size: 15px;
+
+    line-height: 1.9;
+
+    font-style: italic;
+
+    color: rgba(255,255,255,0.62);
+}
+
+.ending-line {
+    display: block;
+
+    width: 70px;
+    height: 1px;
+
+    margin: 22px auto 0;
+
+    background: rgba(255,255,255,0.18);
+}
+
+/* Chapter card interaction */
+
+.book-chapter {
+    cursor: pointer;
+}
+
+.book-chapter:focus-visible {
+    outline: 2px solid rgba(180,165,255,0.65);
+    outline-offset: 4px;
+}
+
+/* Animation */
+
+@keyframes chapterMomentIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .chapter-reader {
+        padding: 12px;
+    }
+
+    .chapter-page {
+        max-height: 92vh;
+
+        padding: 45px 20px 35px;
+
+        border-radius: 20px;
+    }
+
+    .chapter-page-title h2 {
+        font-size: 30px;
+    }
+
+    .chapter-page-title p {
+        font-size: 13px;
+    }
+
+    .chapter-moment {
+        padding: 21px 20px;
+    }
+
+    .chapter-moment h3 {
+        font-size: 16px;
+    }
+
+    .chapter-moment p {
+        font-size: 13px;
+        line-height: 1.85;
+    }
+
+    .chapter-reader-close {
+        top: 12px;
+        right: 12px;
+
+        width: 36px;
+        height: 36px;
+
+        font-size: 24px;
+    }
+
+}
+/* ==========================================================
+   BEFORE YOU / AFTER YOU
+   CINEMATIC COSMIC DESIGN
+========================================================== */
+
+.before-after-section {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* ----------------------------------------------------------
+   BACKGROUND ATMOSPHERE
+---------------------------------------------------------- */
+
+.before-after-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    left: 50%;
+    top: 48%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(110,130,255,0.10),
+            transparent 65%
+        );
+
+    filter: blur(30px);
+
+    pointer-events: none;
+}
+
+
+/* ----------------------------------------------------------
+   BEFORE / AFTER GRID
+---------------------------------------------------------- */
+
+.before-after-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        60px
+        1fr;
+
+    align-items: stretch;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ----------------------------------------------------------
+   CARDS
+---------------------------------------------------------- */
+
+.before-after-card {
+    position: relative;
+
+    min-height: 390px;
+
+    padding: 42px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255,255,255,0.07);
+
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(255,255,255,0.035),
+            transparent 68%
+        );
+
+    transition:
+        transform 0.7s cubic-bezier(.2,.8,.2,1),
+        border-color 0.5s ease,
+        box-shadow 0.7s ease;
+}
+
+
+/* ----------------------------------------------------------
+   BEFORE
+---------------------------------------------------------- */
+
+.before-card {
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(120,130,170,0.075),
+            transparent 68%
+        );
+}
+
+
+/* ----------------------------------------------------------
+   AFTER
+---------------------------------------------------------- */
+
+.after-card {
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(255,150,220,0.09),
+            transparent 68%
+        );
+}
+
+
+/* ----------------------------------------------------------
+   ORBIT
+---------------------------------------------------------- */
+
+.before-after-orbit {
+    position: relative;
+
+    width: 150px;
+    height: 150px;
+
+    margin: 0 auto 30px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 35px rgba(120,130,255,0.07);
+
+    transition:
+        transform 0.8s ease,
+        box-shadow 0.8s ease;
+}
+
+
+.before-after-orbit::before,
+.before-after-orbit::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 13px;
+
+    border-radius: 50%;
+
+    border:
+        1px dashed rgba(255,255,255,0.12);
+
+    animation:
+        beforeAfterOrbit 12s linear infinite;
+}
+
+
+.before-after-orbit::after {
+    inset: 30px;
+
+    border-style: solid;
+
+    opacity: 0.35;
+
+    animation-direction: reverse;
+
+    animation-duration: 8s;
+}
+
+
+.before-after-orbit span {
+    position: relative;
+
+    z-index: 2;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 0.58rem;
+
+    letter-spacing: 4px;
+
+    opacity: 0.55;
+}
+
+
+/* AFTER ORBIT */
+
+.after-card .before-after-orbit {
+    box-shadow:
+        0 0 45px rgba(255,150,220,0.11);
+}
+
+
+@keyframes beforeAfterOrbit {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ----------------------------------------------------------
+   LABEL
+---------------------------------------------------------- */
+
+.before-after-label {
+    display: block;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 0.55rem;
+
+    letter-spacing: 4px;
+
+    opacity: 0.35;
+}
+
+
+/* ----------------------------------------------------------
+   CONTENT
+---------------------------------------------------------- */
+
+.before-after-content {
+    position: relative;
+
+    text-align: center;
+}
+
+
+.before-after-content p {
+    margin: 0;
+
+    padding: 13px 0;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 1.2rem;
+
+    line-height: 1.25;
+
+    opacity: 0.48;
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.055);
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+}
+
+
+.before-after-content p:last-child {
+    border-bottom: none;
+}
+
+
+/* ==========================================================
+   COSMIC TRANSITION DIVIDER
+========================================================== */
+
+.before-after-divider {
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 0;
+
+    z-index: 5;
+}
+
+
+/* TOP / BOTTOM ENERGY LINES */
+
+.before-after-divider::before,
+.before-after-divider::after {
+    content: "";
+
+    width: 1px;
+
+    flex: 1;
+
+    min-height: 70px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(190,185,255,0.20),
+            rgba(255,255,255,0.08)
+        );
+}
+
+
+.before-after-divider::after {
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.08),
+            rgba(220,190,255,0.20),
+            transparent
+        );
+}
+
+
+/* ----------------------------------------------------------
+   CENTRAL STAR
+---------------------------------------------------------- */
+
+.before-after-divider span {
+    position: relative;
+
+    z-index: 3;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(255,255,255,0.16);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(190,175,255,0.12),
+            rgba(255,255,255,0.025) 60%,
+            transparent 70%
+        );
+
+    color:
+        rgba(235,225,255,0.75);
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 1rem;
+
+    box-shadow:
+        0 0 18px rgba(150,140,255,0.10),
+        0 0 45px rgba(150,130,255,0.06);
+
+    backdrop-filter: blur(8px);
+
+    animation:
+        cosmicDividerPulse 4s ease-in-out infinite;
+}
+
+
+/* OUTER ORBIT */
+
+.before-after-divider span::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -8px;
+
+    border:
+        1px solid rgba(255,255,255,0.07);
+
+    border-radius: 50%;
+
+    transform:
+        rotate(25deg)
+        scaleX(1.35);
+
+    animation:
+        dividerOrbit 8s linear infinite;
+}
+
+
+/* SECOND ORBIT */
+
+.before-after-divider span::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -13px;
+
+    border:
+        1px dashed rgba(190,175,255,0.10);
+
+    border-radius: 50%;
+
+    transform:
+        rotate(-35deg)
+        scaleX(1.45);
+
+    animation:
+        dividerOrbitReverse 11s linear infinite;
+}
+
+
+/* ----------------------------------------------------------
+   DIVIDER ANIMATIONS
+---------------------------------------------------------- */
+
+@keyframes cosmicDividerPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.65;
+    }
+
+    50% {
+        transform: scale(1.08);
+        opacity: 1;
+
+        box-shadow:
+            0 0 25px rgba(170,155,255,0.16),
+            0 0 55px rgba(150,130,255,0.08);
+    }
+}
+
+
+@keyframes dividerOrbit {
+
+    from {
+        transform:
+            rotate(0deg)
+            scaleX(1.35);
+    }
+
+    to {
+        transform:
+            rotate(360deg)
+            scaleX(1.35);
+    }
+}
+
+
+@keyframes dividerOrbitReverse {
+
+    from {
+        transform:
+            rotate(360deg)
+            scaleX(1.45);
+    }
+
+    to {
+        transform:
+            rotate(0deg)
+            scaleX(1.45);
+    }
+}
+
+
+/* ==========================================================
+   DESKTOP HOVER
+========================================================== */
+
+@media (min-width: 769px) {
+
+    .before-after-card:hover {
+        transform: translateY(-10px);
+
+        border-color:
+            rgba(255,255,255,0.15);
+
+        box-shadow:
+            0 25px 60px rgba(0,0,0,0.20);
+    }
+
+
+    .before-after-card:hover
+    .before-after-orbit {
+        transform: scale(1.06);
+
+        box-shadow:
+            0 0 60px rgba(130,140,255,0.16);
+    }
+
+
+    .after-card:hover
+    .before-after-orbit {
+        box-shadow:
+            0 0 65px rgba(255,150,220,0.18);
+    }
+
+
+    .before-after-card:hover
+    .before-after-content p {
+        opacity: 0.78;
+
+        transform:
+            translateX(4px);
+    }
+
+
+    .before-after-divider:hover span {
+        transform: scale(1.12);
+
+        color: white;
+
+        box-shadow:
+            0 0 30px rgba(180,165,255,0.20),
+            0 0 70px rgba(150,130,255,0.10);
+    }
+}
+
+
+/* ==========================================================
+   ENDING
+========================================================== */
+
+.before-after-ending {
+    position: relative;
+
+    margin-top: 85px;
+
+    text-align: center;
+}
+
+
+.before-after-ending::before {
+    content: "✦";
+
+    display: block;
+
+    margin-bottom: 25px;
+
+    font-size: 0.8rem;
+
+    opacity: 0.25;
+}
+
+
+.before-after-ending span {
+    opacity: 0.32;
+}
+
+
+.before-after-ending h3 {
+    position: relative;
+
+    margin-top: 18px;
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .before-after-section {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+
+    .before-after-grid {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        width: 100%;
+    }
+
+
+    .before-after-card {
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 30px 22px;
+
+        box-sizing: border-box;
+
+        border-radius: 20px;
+    }
+
+
+    .before-after-orbit {
+        width: 125px;
+        height: 125px;
+
+        margin-bottom: 24px;
+    }
+
+
+    .before-after-content p {
+        font-size: 1.12rem;
+
+        padding: 12px 0;
+    }
+
+
+    /* ------------------------------------------------------
+       MOBILE COSMIC DIVIDER
+    ------------------------------------------------------ */
+
+    .before-after-divider {
+        width: 100%;
+
+        height: 95px;
+
+        flex-direction: row;
+
+        gap: 12px;
+    }
+
+
+    .before-after-divider::before,
+    .before-after-divider::after {
+        width: auto;
+
+        height: 1px;
+
+        min-height: 0;
+
+        flex: 1;
+    }
+
+
+    .before-after-divider::before {
+        background:
+            linear-gradient(
+                to right,
+                transparent,
+                rgba(190,185,255,0.20)
+            );
+    }
+
+
+    .before-after-divider::after {
+        background:
+            linear-gradient(
+                to right,
+                rgba(190,185,255,0.20),
+                transparent
+            );
+    }
+
+
+    .before-after-divider span {
+        width: 46px;
+        height: 46px;
+
+        flex-shrink: 0;
+    }
+
+
+    .before-after-ending {
+        margin-top: 60px;
+
+        padding-bottom: 20px;
+    }
+
+
+    .before-after-ending h3 {
+        font-size: 2rem;
+    }
+
+
+    /* Touch feedback */
+
+    .before-after-card:active {
+        transform: scale(0.985);
+    }
 }
